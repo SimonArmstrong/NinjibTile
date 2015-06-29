@@ -52,19 +52,19 @@ function KeyDown(e)
 {
 	if(e.keyCode == KEY_W || e.keyCode == KEY_UP )
 	{
-		ySpeed = 320;
+		ySpeed = player.speed;
 	}	
 	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN )
 	{
-		ySpeed = -320;
+		ySpeed = -player.speed;
 	}
 	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT )
 	{
-		xSpeed = 320;
+		xSpeed = player.speed;
 	}
 	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT )
 	{
-		xSpeed = -320;
+		xSpeed = -player.speed;
 	}
 }
 window.addEventListener('keydown', KeyDown);

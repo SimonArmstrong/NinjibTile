@@ -13,6 +13,8 @@ var Player = function(image)
 	this.exp = 0;
 	this.level = 1;
 	
+	this.speed = 180;
+	
 	this.money = 0;
 }
 
