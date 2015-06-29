@@ -98,6 +98,9 @@ function run()
 	player.position.y -= ySpeed * deltaTime;
 	player.position.x -= xSpeed * deltaTime;
 	
+	context.fillStyle = "#fff";
+	context.fillRect(0, 0, canvas.width, canvas.height);
+	
 	Rat.draw();
 	player.draw();
 	
