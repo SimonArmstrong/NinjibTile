@@ -40,56 +40,51 @@ mapImage.src = "mapDay.png";
 var xSpeed = 0;
 var ySpeed = 0;
 
-var KEY_SPACE = 32;
-var KEY_UP = 38;
-var KEY_DOWN = 40;
-var KEY_LEFT = 37;
-var KEY_RIGHT = 39;
+var KEY_SPACE = false;
+var KEY_UP = false;
+var KEY_DOWN = false;
+var KEY_LEFT = false;
+var KEY_RIGHT = false;
 
-var KEY_W = 87;
-var KEY_A = 65;
-var KEY_S = 83;
-var KEY_D = 68;
-var KEY_SHIFT = 16;
+var KEY_W = false;
+var KEY_A = false;
+var KEY_S = false;
+var KEY_D = false;
+var KEY_SHIFT = false;
 
 function KeyDown(e)
 {
-	if(e.keyCode == KEY_W || e.keyCode == KEY_UP )
+	if(e.keyCode == 87 || e.keyCode == 38 )
 	{
+		KEY_W = true;
+		KEY_UP = true;
+		KEY_UP = 38;
+		KEY_W = 87;
 		ySpeed = player.speed;
 	}	
-	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN )
+	if(e.keyCode == 83 || e.keyCode == 40 )
 	{
+		KEY_S = true;
+		KEY_DOWN = true;
+		KEY_DOWN = 40;
+		KEY_S = 83;
 		ySpeed = -player.speed;
 	}
-	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT )
+	if(e.keyCode == 65 || e.keyCode == 37 )
 	{
+		KEY_A = true;
+		KEY_LEFT = true;
+		KEY_LEFT = 37;
+		KEY_A = 65;
 		xSpeed = player.speed;
 	}
-	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT )
+	if(e.keyCode == 68 || e.keyCode == 39 )
 	{
+		KEY_D = true;
+		KEY_RIGHT = true;
+		KEY_RIGHT = 39;
+		KEY_D = 68;
 		xSpeed = -player.speed;
-	}
-}
-window.addEventListener('keydown', KeyDown);
-
-function KeyUp(e)
-{
-	if(e.keyCode == KEY_W || e.keyCode == KEY_UP )
-	{
-		ySpeed = 0;
-	}	
-	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN )
-	{
-		ySpeed = 0;
-	}
-	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT )
-	{
-		xSpeed = 0;
-	}
-	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT )
-	{
-		xSpeed = 0;
 	}
 }
 window.addEventListener('keyup', KeyUp);
