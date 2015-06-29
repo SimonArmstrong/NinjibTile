@@ -31,10 +31,7 @@ function getDeltaTime()
 
 var map = new Map(collisionTest, "tilesettest.png")
 
-var position = new Vector2(0, 0);
-
-var testPlayer = document.createElement("img");
-testPlayer.src = "test_player.png";
+var player = new Player("test_player.png");
 
 var KEY_SPACE = 32;
 var KEY_UP = 38;
@@ -52,20 +49,19 @@ function KeyDown(e)
 {
 	if(e.keyCode == KEY_W || e.keyCode == KEY_UP )
 	{
-		if()
-		position.y -= 32;
+		player.position.y -= 32;
 	}
 	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN )
 	{
-		position.y += 32;
+		player.position.y += 32;
 	}
 	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT )
 	{
-		position.x -= 32;
+		player.position.x -= 32;
 	}
 	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT )
 	{
-		position.x += 32;
+		player.position.x += 32;
 	}
 }
 
@@ -75,7 +71,7 @@ window.addEventListener('keydown', KeyDown);
 function run()
 {
 	map.drawMap(0, -32);
-	context.drawImage(testPlayer, position.x, position.y);
+	player.draw();
 }
 
 //-------------------- Don't modify anything below here --------------------------------------------------------------------------------------------

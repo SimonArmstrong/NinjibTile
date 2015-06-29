@@ -16,9 +16,9 @@ var Player = function(image)
 	this.money = 0;
 }
 
-Player.prototype.draw()
+Player.prototype.draw = function()
 {
-	sprite.src = this.image;
+	this.sprite.src = this.image;
 	context.drawImage(this.sprite, this.position.x, this.position.y);
 }
 
