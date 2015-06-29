@@ -1,4 +1,4 @@
-var Enemy = funtion(name, level, image)
+var Enemy = function(name, level, image)
 {
 	this.name = name;
 	this.level = level;
@@ -14,9 +14,8 @@ var Enemy = funtion(name, level, image)
 
 Enemy.prototype.draw = function()
 {
-	sprite.src = this.image;
-	context.drawImage(this.image, this.position.x, this.position.y)
+	this.sprite.src = this.image;
+	context.drawImage(this.sprite, this.position.x, this.position.y)
 };
 
-var Rat = new Enemy ("Rat", 1, "test_enemy.png");
-var Slime = new Enemy ("Slime", 2, "test_enemy.png");
+//var Slime = new Enemy ("Slime", 2, "test_enemy.png");
