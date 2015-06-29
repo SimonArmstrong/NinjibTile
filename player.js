@@ -11,6 +11,7 @@ var Player = function(image)
 	this.attack = 1;
 	this.defense = 1;
 	this.exp = 0;
+	this.level = 1;
 	
 	this.money = 0;
 }

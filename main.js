@@ -50,24 +50,25 @@ var KEY_SHIFT = 16;
 
 function KeyDown(e)
 {
-	if(e.keyCode === KEY_W || e.keyCode === KEY_UP )
+	if(e.keyCode == KEY_W || e.keyCode == KEY_UP )
 	{
 		if()
 		position.y -= 32;
 	}
-	if(e.keyCode === KEY_S || e.keyCode === KEY_DOWN )
+	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN )
 	{
 		position.y += 32;
 	}
-	if(e.keyCode === KEY_A || e.keyCode === KEY_LEFT )
+	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT )
 	{
 		position.x -= 32;
 	}
-	if(e.keyCode === KEY_D || e.keyCode === KEY_RIGHT )
+	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT )
 	{
 		position.x += 32;
 	}
 }
+
 
 window.addEventListener('keydown', KeyDown);
 
