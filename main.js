@@ -32,7 +32,7 @@ function getDeltaTime()
 var map = new Map(collisionTest, "tilesettest.png")
 
 var player = new Player("test_player.png");
-var ui = new UI("notHeart.png");
+//var ui = new UI("notHeart.png");
 
 var xSpeed = 0;
 var ySpeed = 0;
@@ -99,6 +99,9 @@ function run()
 	player.position.y -= ySpeed * deltaTime;
 	player.position.x -= xSpeed * deltaTime;
 	player.draw();
+	
+	//map.drawMap(0, 0);
+	//UI.draw();
 }
 
 //-------------------- Don't modify anything below here --------------------------------------------------------------------------------------------

@@ -2,12 +2,11 @@
 //Add to the run () function
 var UI = function(image)
 {
-	
-//	this.name = "";
-//	this.image = image;
-	
-	this.sprite = document.createElement("img");
+	this.name = "notHeart.png";
 	this.image = image;
+	
+//	this.sprite = document.createElement("img");
+	
 
 }
 
