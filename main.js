@@ -32,6 +32,7 @@ function getDeltaTime()
 var map = new Map(collisionTest, "tilesettest.png")
 
 var player = new Player("test_player.png");
+var ui = new UI("notHeart.png");
 
 var xSpeed = 0;
 var ySpeed = 0;
