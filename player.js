@@ -7,7 +7,7 @@ var Player = function(image)
 	this.scale = new Vector2(32, 32);
 	this.direction = 0;
 	
-	this.health = 10;
+	this.health = 3;
 	this.attack = 1;
 	this.defense = 1;
 	this.exp = 0;
