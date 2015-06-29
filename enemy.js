@@ -18,5 +18,5 @@ Enemy.prototype.draw = function()
 	context.drawImage(this.image, this.position.x, this.position.y)
 };
 
-var Rat = new Enemy ("Rat", 1, "test_player.png");
-var Slime = new Enemy ("Slime", 2, "test_player.png");
+var Rat = new Enemy ("Rat", 1, "test_enemy.png");
+var Slime = new Enemy ("Slime", 2, "test_enemy.png");
