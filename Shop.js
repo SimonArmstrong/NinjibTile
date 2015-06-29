@@ -1,0 +1,4 @@
+var Shop = function ()
+{
+	
+}
