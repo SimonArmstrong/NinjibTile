@@ -32,6 +32,9 @@ function getDeltaTime()
 var player = new Player("test_player.png");
 var Rat = new Enemy ("Rat", 1, "test_enemy.png");
 
+var mapImage = document.createElement("img");
+mapImage.src = "mapDay.png";
+
 //var ui = new UI("notHeart.png");
 
 var xSpeed = 0;
@@ -98,8 +101,7 @@ function run()
 	player.position.y -= ySpeed * deltaTime;
 	player.position.x -= xSpeed * deltaTime;
 	
-	context.fillStyle = "#fff";
-	context.fillRect(0, 0, canvas.width, canvas.height);
+	context.drawImage(mapImage, 0, 0);
 	
 	Rat.draw();
 	player.draw();
