@@ -29,9 +29,9 @@ function getDeltaTime()
 
 //-------------------- Don't modify anything above here-----------------------------------------------------------------------------------------------
 
-var map = new Map(collisionTest, "tilesettest.png")
-
 var player = new Player("test_player.png");
+var Rat = new Enemy ("Rat", 1, "test_enemy.png");
+
 //var ui = new UI("notHeart.png");
 
 var xSpeed = 0;
@@ -94,10 +94,14 @@ window.addEventListener('keyup', KeyUp);
 function run()
 {
 	var deltaTime = getDeltaTime();
-
-	map.drawMap(0, -32);
+	
 	player.position.y -= ySpeed * deltaTime;
 	player.position.x -= xSpeed * deltaTime;
+	
+	context.fillStyle = "#fff";
+	context.fillRect(0, 0, canvas.width, canvas.height);
+	
+	Rat.draw();
 	player.draw();
 	
 	//map.drawMap(0, 0);
