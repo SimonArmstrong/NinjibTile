@@ -3,7 +3,7 @@ var Player = function(image)
 	this.sprite = document.createElement("img");
 	this.image = image;
 	
-	this.position = new Vector2(0, 0);
+	this.position = new Vector2(32, 32);
 	this.scale = new Vector2(32, 32);
 	this.direction = 0;
 	

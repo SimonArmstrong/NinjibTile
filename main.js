@@ -33,6 +33,9 @@ var map = new Map(collisionTest, "tilesettest.png")
 
 var player = new Player("test_player.png");
 
+var xSpeed = 0;
+var ySpeed = 0;
+
 var KEY_SPACE = 32;
 var KEY_UP = 38;
 var KEY_DOWN = 40;
@@ -49,28 +52,51 @@ function KeyDown(e)
 {
 	if(e.keyCode == KEY_W || e.keyCode == KEY_UP )
 	{
-		player.position.y -= 32;
-	}
+		ySpeed = 320;
+	}	
 	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN )
 	{
-		player.position.y += 32;
+		ySpeed = -320;
 	}
 	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT )
 	{
-		player.position.x -= 32;
+		xSpeed = 320;
 	}
 	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT )
 	{
-		player.position.x += 32;
+		xSpeed = -320;
 	}
 }
-
-
 window.addEventListener('keydown', KeyDown);
+
+function KeyUp(e)
+{
+	if(e.keyCode == KEY_W || e.keyCode == KEY_UP )
+	{
+		ySpeed = 0;
+	}	
+	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN )
+	{
+		ySpeed = 0;
+	}
+	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT )
+	{
+		xSpeed = 0;
+	}
+	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT )
+	{
+		xSpeed = 0;
+	}
+}
+window.addEventListener('keyup', KeyUp);
 
 function run()
 {
+	var deltaTime = getDeltaTime();
+
 	map.drawMap(0, -32);
+	player.position.y -= ySpeed * deltaTime;
+	player.position.x -= xSpeed * deltaTime;
 	player.draw();
 }
 
