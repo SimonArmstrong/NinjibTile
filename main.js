@@ -87,6 +87,27 @@ function KeyDown(e)
 		xSpeed = -player.speed;
 	}
 }
+window.addEventListener('keydown', KeyDown);
+
+function KeyUp(e)
+{
+	if(e.keyCode == KEY_W || e.keyCode == KEY_UP )
+	{
+		ySpeed = 0;
+	}	
+	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN )
+	{
+		ySpeed = 0;
+	}
+	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT )
+	{
+		xSpeed = 0;
+	}
+	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT )
+	{
+		xSpeed = 0;
+	}
+}
 window.addEventListener('keyup', KeyUp);
 
 function run()
