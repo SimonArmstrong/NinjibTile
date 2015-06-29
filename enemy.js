@@ -1,12 +1,13 @@
 var Enemy = function(name, level, image)
 {
 	this.name = name;
-	this.level = level;
+	this.level = 0;
 	
 	this.sprite = document.createElement("img");
 	this.image = image;
 	
-	this.health = level*2;
+	this.health = 2 + level;
+	this.enemyCount = 3 + level + 1;
 	
 	this.position = new Vector2(0, 0);
 	this.direction = 0;
