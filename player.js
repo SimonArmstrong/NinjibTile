@@ -16,6 +16,15 @@ var Player = function(image)
 	this.speed = 180;
 	
 	this.money = 0;
+	
+	/*
+	this.FACE_UP = new Collider("player", new Vector2(this.scale.x, 1), this.position);
+	this.FACE_DOWN = new Collider("player", new Vector2(this.scale.x, 1), new Vector2(0, this.position.y + this.scale.y));
+	this.FACE_LEFT = new Collider("player", new Vector2(1, this.scale.y), new Vector2(this.position.y + this.scale.y, 0));
+	this.FACE_RIGHT = new Collider("player", new Vector2(1, this.scale.y), new Vector2(this.position.x + this.scale.x, this.position.y));
+	*/
+	
+	this.collider = new Collider("player", this.scale, this.position);
 }
 
 Player.prototype.draw = function()

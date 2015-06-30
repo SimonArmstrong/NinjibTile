@@ -117,10 +117,20 @@ function run()
 	player.position.y -= ySpeed * deltaTime;
 	player.position.x -= xSpeed * deltaTime;
 	
+	if(player.collider.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
+	{
+		console.log("bruh");
+	}
+	
 	context.drawImage(mapImage, 0, 0);
+	
+	context.fillStyle = "#000";
+	context.fillRect(canvas.width - 32, 0, 32, canvas.height);
 	
 	Rat.draw();
 	player.draw();
+	
+	
 	
 	//map.drawMap(0, 0);
 	//UI.draw();
