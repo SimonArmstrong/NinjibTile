@@ -5,20 +5,23 @@ function BuildCollision()
 	FACE_LEFT = new Collider("player", new Vector2(1, player.scale.y), new Vector2(player.position.y + player.scale.y, 0));
 	FACE_RIGHT = new Collider("player", new Vector2(1, player.scale.y), new Vector2(player.position.x + player.scale.x, player.position.y));
 	
-	if(FACE_UP.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
+	for(var i = 0; i <= walls.length - 1; i++)
 	{
-		console.log("UP");
-	}
-	if(FACE_DOWN.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
-	{
-		console.log("DOWN");
-	}
-	if(FACE_LEFT.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
-	{
-		console.log("LEFT");
-	}
-	if(FACE_RIGHT.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
-	{
-		console.log("RIGHT");
+		if(FACE_UP.isTouching(walls[i].collider) === true)
+		{
+			console.log("UP");
+		}
+		if(FACE_DOWN.isTouching(walls[i].collider) === true)
+		{
+			console.log("DOWN");
+		}
+		if(FACE_LEFT.isTouching(walls[i].collider) === true)
+		{
+			console.log("LEFT");
+		}
+		if(FACE_RIGHT.isTouching(walls[i].collider) === true)
+		{
+			console.log("RIGHT");
+		}
 	}
 }
