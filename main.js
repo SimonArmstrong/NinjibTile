@@ -48,9 +48,9 @@ function run()
 	if (gameState === STATE_GAME)
 	{
 		BuildCollision();
-		BuildWalls();
 		BuildMap();
 		BuildEntities(deltaTime);
+		BuildWalls();
 		
 		if(player.health <= 0)
 		{
