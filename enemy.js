@@ -28,4 +28,11 @@ if(Enemy.enemyCount = 0)
 	level + 1;
 }
 
+if(enemy.health = 0)
+{
+	player.exp + enemy.exp;
+}
+
+
+
 //var Slime = new Enemy ("Slime", 2, "test_enemy.png");

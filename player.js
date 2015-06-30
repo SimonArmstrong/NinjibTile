@@ -33,4 +33,23 @@ Player.prototype.draw = function()
 	context.drawImage(this.sprite, this.position.x, this.position.y);
 }
 
+if(Player.exp = 5)
+{
+	Player.health + 1;
+	Player.level + 1;
+	player.exp = 0;
+	if(player.exp = 10)
+	{
+		player.health + 1;
+		player.level + 1;
+		player.exp = 0;
+		if(player.exp = 20)
+		{
+			player.health + 3;
+			player.level + 1;
+			player.exp = 0;
+		}
+	}
+}
+
 //Add Drawing methods
