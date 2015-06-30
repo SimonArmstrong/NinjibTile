@@ -30,7 +30,7 @@ function getDeltaTime()
 //-------------------- Don't modify anything above here-----------------------------------------------------------------------------------------------
 
 var player = new Player("test_player.png");
-var Rat = new Enemy ("Rat", 1, "test_enemy.png");
+var Rat = new Enemy ("Rat", 1, "Rat_Image.png");
 
 var mapImage = document.createElement("img");
 mapImage.src = "mapDay.png";
@@ -40,50 +40,40 @@ mapImage.src = "mapDay.png";
 var xSpeed = 0;
 var ySpeed = 0;
 
-var KEY_SPACE = false;
-var KEY_UP = false;
-var KEY_DOWN = false;
-var KEY_LEFT = false;
-var KEY_RIGHT = false;
+var X_AXIS = false;
 
-var KEY_W = false;
-var KEY_A = false;
-var KEY_S = false;
-var KEY_D = false;
-var KEY_SHIFT = false;
+var KEY_SPACE = 32;
+var KEY_UP = 38;
+var KEY_DOWN = 40;
+var KEY_LEFT = 37;
+var KEY_RIGHT = 39;
+
+var KEY_W = 87;
+var KEY_A = 65;
+var KEY_S = 83;
+var KEY_D = 68;
+var KEY_SHIFT = 16;
 
 function KeyDown(e)
 {
-	if(e.keyCode == 87 || e.keyCode == 38 )
+	if(e.keyCode == KEY_W || e.keyCode == KEY_UP)
 	{
-		KEY_W = true;
-		KEY_UP = true;
-		KEY_UP = 38;
-		KEY_W = 87;
+		X_AXIS = false;
 		ySpeed = player.speed;
 	}	
-	if(e.keyCode == 83 || e.keyCode == 40 )
+	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN)
 	{
-		KEY_S = true;
-		KEY_DOWN = true;
-		KEY_DOWN = 40;
-		KEY_S = 83;
+		X_AXIS = false;
 		ySpeed = -player.speed;
 	}
-	if(e.keyCode == 65 || e.keyCode == 37 )
+	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT)
 	{
-		KEY_A = true;
-		KEY_LEFT = true;
-		KEY_LEFT = 37;
-		KEY_A = 65;
+		X_AXIS = true;
 		xSpeed = player.speed;
 	}
-	if(e.keyCode == 68 || e.keyCode == 39 )
+	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT)
 	{
-		KEY_D = true;
-		KEY_RIGHT = true;
-		KEY_RIGHT = 39;
-		KEY_D = 68;
+		X_AXIS = true;
 		xSpeed = -player.speed;
 	}
 }
@@ -110,6 +100,12 @@ function KeyUp(e)
 }
 window.addEventListener('keyup', KeyUp);
 
+var FACE_UP;
+var FACE_DOWN;
+var FACE_LEFT;
+var FACE_RIGHT;
+
+
 function run()
 {
 	var deltaTime = getDeltaTime();
@@ -117,9 +113,26 @@ function run()
 	player.position.y -= ySpeed * deltaTime;
 	player.position.x -= xSpeed * deltaTime;
 	
-	if(player.collider.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
+	FACE_UP = new Collider("player", new Vector2(player.scale.x, 1), player.position);
+	FACE_DOWN = new Collider("player", new Vector2(player.scale.x, 1), new Vector2(0, player.position.y + player.scale.y));
+	FACE_LEFT = new Collider("player", new Vector2(1, player.scale.y), new Vector2(player.position.y + player.scale.y, 0));
+	FACE_RIGHT = new Collider("player", new Vector2(1, player.scale.y), new Vector2(player.position.x + player.scale.x, player.position.y));
+	
+	if(FACE_UP.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
 	{
-		console.log("bruh");
+		console.log("UP");
+	}
+	if(FACE_DOWN.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
+	{
+		console.log("DOWN");
+	}
+	if(FACE_LEFT.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
+	{
+		console.log("LEFT");
+	}
+	if(FACE_RIGHT.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
+	{
+		console.log("RIGHT");
 	}
 	
 	context.drawImage(mapImage, 0, 0);

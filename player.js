@@ -24,7 +24,7 @@ var Player = function(image)
 	this.FACE_RIGHT = new Collider("player", new Vector2(1, this.scale.y), new Vector2(this.position.x + this.scale.x, this.position.y));
 	*/
 	
-	this.collider = new Collider("player", this.scale, this.position);
+	//this.collider = new Collider("player", this.scale, this.position);
 }
 
 Player.prototype.draw = function()
