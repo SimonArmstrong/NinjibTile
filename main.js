@@ -35,11 +35,55 @@ function run()
 {
 	var deltaTime = getDeltaTime();
 	
-	BuildCollision();
-	BuildMap();
-	BuildEntities(deltaTime);
-	BuildWalls();
-	//BuildShop();
+	if (gameState === STATE_LOADING)
+	{
+		loadSeconds -= deltaTime;
+		
+		if (loadSeconds <= 0)
+		{
+			gameState = STATE_GAME;
+		}
+	}
+		
+	if (gameState === STATE_GAME)
+	{
+		BuildCollision();
+		BuildWalls();
+		BuildMap();
+		BuildEntities(deltaTime);
+		
+		if(player.health <= 0)
+		{
+			gameState = STATE_GAMEOVER;
+		}				
+	}	
+	
+	if (gameState === STATE_SHOP)
+	{
+		context.fillStyle = "#000";
+		context.font="24px Arial";
+		context.fillText("SHOP", 200, 240);
+
+		//BuildShop();
+	}
+	
+	if (gameState === STATE_MENU)
+	{
+		context.fillStyle = "#000";
+		context.font="24px Arial";
+		context.fillText("MENU", 200, 240);		
+	}
+	
+	 if (gameState === STATE_GAMEOVER)
+	{
+		context.fillStyle = "#000";
+		context.font="24px Arial";
+		context.fillText("GAME OVER", 200, 240);
+		
+		context.fillStyle = "#000";
+		context.font="12px Arial";
+		context.fillText("Press 'SPACE' to continue...", 200, 280);
+	}		
 }
 
 States();
