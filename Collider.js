@@ -19,12 +19,9 @@ Collider.prototype.isTouching = function(col)
 	}
 }
 
-Collider.prototype.draw = function()
+Collider.prototype.draw = function(color)
 {
-	context.fillStyle = "#f00";
-	context.fillRect(this.position.x, this.position.y, this.scale.x, 1);
-	context.fillRect(this.position.x, this.position.y + this.scale.y, this.scale.x, 1);
-	context.fillRect(this.position.x, this.position.y, 1, this.scale.y);
-	context.fillRect(this.position.x + this.scale.x, this.position.y, 1, this.scale.y);
+	context.fillStyle = color;
+	context.fillRect(this.position.x, this.position.y, this.scale.x, this.scale.y);
 }
 

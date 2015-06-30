@@ -29,12 +29,9 @@ function getDeltaTime()
 
 //-------------------- Don't modify anything above here-----------------------------------------------------------------------------------------------
 
-GetEvents();
-
 function run()
 {
 	var deltaTime = getDeltaTime();
-	
 	if (gameState === STATE_LOADING)
 	{
 		loadSeconds -= deltaTime;
@@ -47,7 +44,8 @@ function run()
 		
 	if (gameState === STATE_GAME)
 	{
-		BuildCollision();
+		UpdateEvents();
+		BuildCollision(deltaTime);
 		BuildMap();
 		BuildEntities(deltaTime);
 		BuildWalls();
