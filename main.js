@@ -40,8 +40,6 @@ mapImage.src = "mapDay.png";
 var xSpeed = 0;
 var ySpeed = 0;
 
-var X_AXIS = false;
-
 var KEY_SPACE = 32;
 var KEY_UP = 38;
 var KEY_DOWN = 40;
@@ -56,46 +54,52 @@ var KEY_SHIFT = 16;
 
 function KeyDown(e)
 {
-	if(e.keyCode == KEY_W || e.keyCode == KEY_UP)
+	switch(e.keyCode)
 	{
-		X_AXIS = false;
-		ySpeed = player.speed;
-	}	
-	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN)
-	{
-		X_AXIS = false;
-		ySpeed = -player.speed;
-	}
-	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT)
-	{
-		X_AXIS = true;
-		xSpeed = player.speed;
-	}
-	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT)
-	{
-		X_AXIS = true;
-		xSpeed = -player.speed;
+		//Up movement
+		case KEY_W || KEY_UP:
+			ySpeed = player.speed;
+			xSpeed = 0; 
+		break;
+		//Down movement
+		case KEY_S || KEY_DOWN:
+			ySpeed = -player.speed;
+			xSpeed = 0; 
+		break;
+		//Left movement
+		case KEY_A || KEY_LEFT:
+			xSpeed = player.speed;
+			ySpeed = 0;
+		break;
+		//Right movement
+		case KEY_D || KEY_RIGHT:
+			xSpeed = -player.speed;
+			ySpeed = 0;
+		break;
 	}
 }
 window.addEventListener('keydown', KeyDown);
 
 function KeyUp(e)
-{
-	if(e.keyCode == KEY_W || e.keyCode == KEY_UP )
+{		
+	switch(e.keyCode)
 	{
-		ySpeed = 0;
-	}	
-	if(e.keyCode == KEY_S || e.keyCode == KEY_DOWN )
-	{
-		ySpeed = 0;
-	}
-	if(e.keyCode == KEY_A || e.keyCode == KEY_LEFT )
-	{
-		xSpeed = 0;
-	}
-	if(e.keyCode == KEY_D || e.keyCode == KEY_RIGHT )
-	{
-		xSpeed = 0;
+		//Up stopping
+		case KEY_W || KEY_UP:
+			ySpeed = 0; 
+		break;
+		//Down stopping
+		case KEY_S || KEY_DOWN:
+			ySpeed = 0; 
+		break;
+		//Left stopping
+		case KEY_A || KEY_LEFT:
+			xSpeed = 0;
+		break;
+		//Right Stopping
+		case KEY_D || KEY_RIGHT:
+			xSpeed = 0;
+		break;
 	}
 }
 window.addEventListener('keyup', KeyUp);
