@@ -24,6 +24,17 @@ Enemy.prototype.draw = function()
 	this.sprite.src = this.image;
 	context.drawImage(this.sprite, this.position.x, this.position.y)
 };
+
+if(enemy.position.x > canvas.width)
+{
+	enemy.position.x = 0;
+}
+
+if(enemy.position.x < canvas.width)
+{
+	enemy.position.x = canvas.width;
+}
+
 /*
 if(Enemy.enemyCount = 0)
 {
