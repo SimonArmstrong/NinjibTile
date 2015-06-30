@@ -29,148 +29,16 @@ function getDeltaTime()
 
 //-------------------- Don't modify anything above here-----------------------------------------------------------------------------------------------
 
-var STATE_MENU = 0;
-var STATE_GAME = 1;
+GetEvents();
 
-var gameState = STATE_MENU;
-
-var Rat = new Enemy("Rat", 1, "Rat_Image.png");
-
-var mapImage = document.createElement("img");
-mapImage.src = "mapDay.png";
-
-//var ui = new UI("notHeart.png");
-
-var xSpeed = 0;
-var ySpeed = 0;
-
-var KEY_SPACE = 32;
-var KEY_UP = 38;
-var KEY_DOWN = 40;
-var KEY_LEFT = 37;
-var KEY_RIGHT = 39;
-
-var KEY_W = 87;
-var KEY_A = 65;
-var KEY_S = 83;
-var KEY_D = 68;
-var KEY_SHIFT = 16;
-
-function KeyDown(e)
-{
-	switch(e.keyCode)
-	{
-		//Up movement
-		case KEY_W || KEY_UP:
-			ySpeed = player.speed;
-			xSpeed = 0; 
-			player.direction = 1;
-		break;
-		//Down movement
-		case KEY_S || KEY_DOWN:
-			ySpeed = -player.speed;
-			xSpeed = 0; 
-			player.direction = 2;
-		break;
-		//Left movement
-		case KEY_A || KEY_LEFT:
-			xSpeed = player.speed;
-			ySpeed = 0;
-			player.direction = 3;
-		break;
-		//Right movement
-		case KEY_D || KEY_RIGHT:
-			xSpeed = -player.speed;
-			ySpeed = 0;
-			player.direction = 4;
-		break;
-	}
-}
-window.addEventListener('keydown', KeyDown);
-
-function KeyUp(e)
-{		
-	switch(e.keyCode)
-	{
-		//Up stopping
-		case KEY_W || KEY_UP:
-			ySpeed = 0; 
-		break;
-		//Down stopping
-		case KEY_S || KEY_DOWN:
-			ySpeed = 0; 
-		break;
-		//Left stopping
-		case KEY_A || KEY_LEFT:
-			xSpeed = 0;
-		break;
-		//Right Stopping
-		case KEY_D || KEY_RIGHT:
-			xSpeed = 0;
-		break;
-	}
-}
-window.addEventListener('keyup', KeyUp);
-
-var FACE_UP;
-var FACE_DOWN;
-var FACE_LEFT;
-var FACE_RIGHT;
-var secondstowait = 3;
 function run()
 {
 	var deltaTime = getDeltaTime();
-	if(gameState === STATE_GAME)
-	{	
-		player.position.y -= ySpeed * deltaTime;
-		player.position.x -= xSpeed * deltaTime;
-		
-		FACE_UP = new Collider("player", new Vector2(player.scale.x, 1), player.position);
-		FACE_DOWN = new Collider("player", new Vector2(player.scale.x, 1), new Vector2(0, player.position.y + player.scale.y));
-		FACE_LEFT = new Collider("player", new Vector2(1, player.scale.y), new Vector2(player.position.y + player.scale.y, 0));
-		FACE_RIGHT = new Collider("player", new Vector2(1, player.scale.y), new Vector2(player.position.x + player.scale.x, player.position.y));
-		
-		if(FACE_UP.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
-		{
-			console.log("UP");
-		}
-		if(FACE_DOWN.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
-		{
-			console.log("DOWN");
-		}
-		if(FACE_LEFT.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
-		{
-			console.log("LEFT");
-		}
-		if(FACE_RIGHT.isTouching(new Collider("Wall", new Vector2(32, canvas.height), new Vector2(canvas.width - 32, 0))) === true)
-		{
-			console.log("RIGHT");
-		}
-		
-		context.drawImage(mapImage, 0, 0);
-		
-		context.fillStyle = "#000";
-		context.fillRect(canvas.width - 32, 0, 32, canvas.height);
-		
-		Rat.draw();
-		player.draw();
-		
-	}
-	else if(gameState === STATE_MENU)
-	{
-		secondstowait -= deltaTime;
-		
-		context.fillStyle = "#fff";
-		context.fillRect(0, 0, canvas.width, canvas.height);
-		
-		context.fillStyle = "#000";
-		context.fillText(secondstowait, 10, 10);
-		
-		if(secondstowait <= 0)
-		{
-			gameState = STATE_GAME;
-		}
-	}
+	
+	BuildCollision();
+	BuildWalls();
+	BuildMap();
+	BuildEntities(deltaTime);
 }
 
 //-------------------- Don't modify anything below here --------------------------------------------------------------------------------------------
