@@ -36,9 +36,9 @@ function run()
 	var deltaTime = getDeltaTime();
 	
 	BuildCollision();
-	BuildWalls();
 	BuildMap();
 	BuildEntities(deltaTime);
+	BuildWalls();
 	BuildShop();
 }
 
