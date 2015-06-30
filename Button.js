@@ -3,7 +3,7 @@ var Button = function(text, vec_p)
 	this.text = text;
 	this.item = 0;
 	this.size = new Vector2(64, 64);
-	this.position = new Vector2 (0, 0);
+	this.position = new Vector2 (100, 100);
 }
 
 Button.prototype.draw = function()

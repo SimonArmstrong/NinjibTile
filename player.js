@@ -28,7 +28,6 @@ var Player = function(image)
 	//this.collider = new Collider("player", this.scale, this.position);
 }
 
-
 Player.prototype.draw = function()
 {
 	this.sprite.src = this.image;
@@ -36,6 +35,8 @@ Player.prototype.draw = function()
 }
 
 var player = new Player("test_player.png");
+
+player.equippedItem = items[17];
 
 if(player.exp = 5)
 {
