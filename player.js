@@ -8,12 +8,13 @@ var Player = function(image)
 	this.direction = 0;
 	
 	this.health = 3;
-	this.attack = 1;
 	this.defense = 1;
 	this.exp = 0;
 	this.level = 1;
 	
 	this.speed = 180;
+	
+	this.equippedItem;
 	
 	this.money = 0;
 	
@@ -26,6 +27,7 @@ var Player = function(image)
 	
 	//this.collider = new Collider("player", this.scale, this.position);
 }
+
 
 Player.prototype.draw = function()
 {

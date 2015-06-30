@@ -39,6 +39,7 @@ function run()
 	BuildWalls();
 	BuildMap();
 	BuildEntities(deltaTime);
+	BuildShop();
 }
 
 //-------------------- Don't modify anything below here --------------------------------------------------------------------------------------------
