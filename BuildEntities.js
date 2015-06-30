@@ -42,4 +42,5 @@ function BuildEntities(deltaTime)
 
 	Rat.draw();
 	player.draw();
+	sword.draw();
 }
