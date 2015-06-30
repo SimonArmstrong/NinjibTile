@@ -1,3 +1,12 @@
+var STATE_LOADING = 0;
+var STATE_GAME = 1;
+var STATE_SHOP = 2;
+var STATE_MENU = 3;	
+var STATE_GAMEOVER = 4;
+
+var gameState = STATE_LOADING;
+var loadSeconds = 2;
+
 function GetEvents()
 {
 	var KEY_SPACE = 32;
@@ -16,54 +25,77 @@ function GetEvents()
 	
 	function KeyDown(e)
 	{
-		switch(e.keyCode)
+		if(gameState === STATE_GAME)
 		{
-			//Up movement
-			case KEY_W || KEY_UP:
-				ySpeed = player.speed;
-				xSpeed = 0; 
-				player.direction = 1;
-			break;
-			//Down movement
-			case KEY_S || KEY_DOWN:
-				ySpeed = -player.speed;
-				xSpeed = 0; 
-				player.direction = 2;
-			break;
-			//Left movement
-			case KEY_A || KEY_LEFT:
-				xSpeed = player.speed;
-				ySpeed = 0;
-				player.direction = 3;
-			break;
-			//Right movement
-			case KEY_D || KEY_RIGHT:
-				xSpeed = -player.speed;
-				ySpeed = 0;
-				player.direction = 4;
-			break;
-			// Press Space
-			case KEY_SPACE && (gameState === STATE_GAMEOVER):
-				gameState = STATE_LOADING;
-			break;
-			// Press ESC on Game State
-			case KEY_ESC && (gameState === STATE_GAME):
-				gameState = STATE_MENU;
-			break;				
-			// Press ESC on Menu State
-			case KEY_ESC && (gameState === STATE_MENU):
-				gameState = STATE_GAME;			
-			break;			
-			// Press Enter on Game State
-			case KEY_ENTER && (gameState === STATE_GAME):
-				gameState = STATE_SHOP;
-			// Press Enter on Shop State
-			case KEY_ENTER && (gameState === STATE_SHOP):
-					gameState = STATE_GAME;				
-			break;			
-			
+			switch(e.keyCode)
+			{
+				//Up movement
+				case KEY_W || KEY_UP:
+					ySpeed = player.speed;
+					xSpeed = 0; 
+					player.direction = 1;
+				break;
+				//Down movement
+				case KEY_S || KEY_DOWN:
+					ySpeed = -player.speed;
+					xSpeed = 0; 
+					player.direction = 2;
+				break;
+				//Left movement
+				case KEY_A || KEY_LEFT:
+					xSpeed = player.speed;
+					ySpeed = 0;
+					player.direction = 3;
+				break;
+				//Right movement
+				case KEY_D || KEY_RIGHT:
+					xSpeed = -player.speed;
+					ySpeed = 0;
+					player.direction = 4;
+				break;
+
+				// Press ESC
+				case KEY_ESC:
+					gameState = STATE_MENU;				
+				break;			
+				// Press Enter
+				case KEY_ENTER:
+					gameState = STATE_SHOP;			
+				break;			
+			}
 		}
+		
+		if(gameState === STATE_SHOP)
+		{
+			switch(e.keyCode)
+			{
+				case KEY_ENTER:
+					gameState = STATE_GAME
+				break;
+			}
+		}
+		
+		if(gameState === STATE_MENU)
+		{
+			switch(e.keyCode)
+			{
+				case KEY_ESC:
+					gameState = STATE_GAME
+				break;
+			}		
+		}
+		
+		if(gameState === STATE_GAMEOVER)
+		{
+			switch(e.keyCode)
+			{
+				case KEY_SPACE:
+					gameState = STATE_LOADING
+				break;
+			}		
+		}		
 	}
+	
 	window.addEventListener('keydown', KeyDown);
 
 	function KeyUp(e)
