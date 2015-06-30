@@ -9,8 +9,10 @@ var Enemy = function(name, level, image)
 	this.health = 2 + level;
 	this.enemyCount = 3 + level;
 	
-	this.position = new Vector2(0, 0);
+	this.position = new Vector2(64, 64);
 	this.direction = 0;
+	
+	this.speed = player.speed/2;
 	
 	this.damage = 1;
 	
