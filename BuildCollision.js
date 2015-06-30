@@ -14,21 +14,21 @@ function BuildCollision(deltaTime)
 	{
 		if(FACE_UP.isTouching(walls[i].collider) === true)
 		{
-			player.position.y += (ySpeed + 10) * deltaTime;
+			player.position.y += (ySpeed + 100) * deltaTime;
 		}
 		if(FACE_RIGHT.isTouching(walls[i].collider) === true)
 		{
-			player.position.x -= (-xSpeed + 10) * deltaTime;
+			player.position.x -= (-xSpeed + 100) * deltaTime;
 		}
 
 		if(FACE_BOTTOM.isTouching(walls[i].collider) === true)
 		{
-			player.position.y -= (-ySpeed + 10) * deltaTime;
+			player.position.y -= (-ySpeed + 100) * deltaTime;
 		}
 
 		if(FACE_LEFT.isTouching(walls[i].collider) === true)
 		{
-			player.position.x += (xSpeed + 10) * deltaTime;
+			player.position.x += (xSpeed + 100) * deltaTime;
 		}
 
 	}
