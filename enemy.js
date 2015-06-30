@@ -25,12 +25,12 @@ Enemy.prototype.draw = function()
 
 if(Enemy.enemyCount = 0)
 {
-	level + 1;
+	level += 1;
 }
 
 if(enemy.health = 0)
 {
-	player.exp + enemy.exp;
+	player.exp += enemy.exp;
 }
 
 
