@@ -60,21 +60,25 @@ function KeyDown(e)
 		case KEY_W || KEY_UP:
 			ySpeed = player.speed;
 			xSpeed = 0; 
+			player.direction = 1;
 		break;
 		//Down movement
 		case KEY_S || KEY_DOWN:
 			ySpeed = -player.speed;
 			xSpeed = 0; 
+			player.direction = 2;
 		break;
 		//Left movement
 		case KEY_A || KEY_LEFT:
 			xSpeed = player.speed;
 			ySpeed = 0;
+			player.direction = 3;
 		break;
 		//Right movement
 		case KEY_D || KEY_RIGHT:
 			xSpeed = -player.speed;
 			ySpeed = 0;
+			player.direction = 4;
 		break;
 	}
 }
