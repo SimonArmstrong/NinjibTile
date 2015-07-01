@@ -1,4 +1,5 @@
 var Rat = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+/*
 var Rat2 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat3 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat4 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
@@ -6,7 +7,7 @@ var Rat5 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) +
 var Rat6 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat7 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat8 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-
+*/
 
 var enemies = [];
 
@@ -15,6 +16,7 @@ xSpeed = 0;
 ySpeed = 0;
 
 enemies.push(Rat);
+/*
 enemies.push(Rat2);
 enemies.push(Rat3);
 enemies.push(Rat4);
@@ -22,7 +24,7 @@ enemies.push(Rat5);
 enemies.push(Rat6);
 enemies.push(Rat7);
 enemies.push(Rat8);
-
+*/
 function BuildEntities(deltaTime)
 {
 	if(player.direction == 4)
@@ -42,9 +44,8 @@ function BuildEntities(deltaTime)
 		sword.position = new Vector2(player.position.x, player.position.y - 32);
 	}
 	
-
-	
 	player.trigger = new Collider("player_trigger", new Vector2(256, 256), new Vector2(player.position.x - 114, player.position.y - 114));
+	
 	for(var i = 0; i <= enemies.length - 1; i++)
 	{
 		enemies[i].ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y));
@@ -52,19 +53,45 @@ function BuildEntities(deltaTime)
 		enemies[i].ENEMY_LEFT   = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
 		enemies[i].ENEMY_BOTTOM = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y + enemies[i].scale.y));		
 		
-		/*
 		if(enemies[i].collider.isTouching(player.trigger))
 		{
-			if(player.position.y < enemy.position.y)
+			if(enemies[i].position.y < player.position.y + 16)
 			{
 				enemies[i].enemyRandDirect = 4;
 			}
-			if(player.position.y > enemy.position.y)
+			if(enemies[i].position.y > player.position.y - 16)
 			{
-				
+				enemies[i].enemyRandDirect = 3;
 			}
+			if(enemies[i].position.y >= player.position.y - 16 && enemies[i].position.y <= player.position.y + 16)
+			{
+				if(enemies[i].position.x < player.position.x)
+				{
+					enemies[i].enemyRandDirect = 2;
+				}
+				if(enemies[i].position.x > player.position.x)
+				{
+					enemies[i].enemyRandDirect = 1;
+				}
+			}
+			enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
+			enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
 		}
-		*/
+		else
+		{
+			//Enemy wanders
+			enemies[i].enemyMTime -= deltaTime;
+		
+			if(enemies[i].enemyMTime <= 0)
+			{
+				enemies[i].enemyRandDirect = Math.floor((Math.random() * 4) + 1);
+				enemies[i].enemyMTime = 2;
+			}
+			
+			enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
+			enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
+		}
+		player.trigger.draw("#f00");
 	}
 	
 	for(var i = 0; i <= enemies.length - 1; i++)
@@ -105,16 +132,7 @@ function BuildEntities(deltaTime)
 		
 	for(var i = 0; i <= enemies.length - 1; i++)
 	{
-		enemies[i].enemyMTime -= deltaTime;
-		
-		if(enemies[i].enemyMTime <= 0)
-		{
-			enemies[i].enemyRandDirect = Math.floor((Math.random() * 4) + 1);
-			enemies[i].enemyMTime = 2;
-		}
-		
-		enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
-		enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
+
 		
 		if(sword.isAttacking == true)
 		{
