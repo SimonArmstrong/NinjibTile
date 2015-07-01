@@ -1,6 +1,6 @@
 //Background music
 var musicBackground = new Howl({
-	urls: ["Castlevania-II-Simons-Quest-NES-Music-Castle-Theme-01-Dwellings-of-Doom.mp3.mp3"], 
+	urls: ["Legend of Zelda - NES - Dungeon Theme.mp3"], 
 	loop: false, 
 	buffer: true, 
 	volume: 0.5

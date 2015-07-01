@@ -14,7 +14,6 @@ var right = document.createElement("img");
 var up    = document.createElement("img");
 var down  = document.createElement("img");
 
-
 left.src = "test_player5.png";
 right.src = "test_player4.png";
 up.src = "test_player6.png";
@@ -130,7 +129,7 @@ function BuildEntities(deltaTime)
 		}
 		if(player.health <= 0)
 		{
-			player.sprite = ("test_playerdead.png");
+			player.image = ("test_playerdead.png");
 		}
 	}
 	
