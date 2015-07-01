@@ -40,7 +40,7 @@ function GoldDisplay()
 
 	context.fillStyle = "yellow";
 	context.font = "24px Lucida Sans Unicode";
-	var moneyText = "      " + player.money;
+	var moneyText = "      $" + player.money;
 	context.fillText (moneyText, canvas.width - 150, 25 ); 
 } 
 

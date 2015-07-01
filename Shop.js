@@ -12,9 +12,12 @@ function BuildShop()
 	if(!loaded)
 	{
 		context.drawImage(backgroundImage, 0, 0);
-		context.fillStyle = "#000";
-		context.font = "16px Verdana";
-		context.fillText("Money: $" + money, 10, 300);
+		context.fillStyle = "#D1D119";
+		context.font = "24px Lucida Sans Unicode";
+		context.fillText("            : $" + money, 10, 300);
+		var coinImage = document.createElement("img");
+		coinImage.src = "coin-pug.png";
+		context.drawImage(coinImage, 70, 275);
 		
 		for(var i = 0; i <= items.length - 1; i++)
 		{
