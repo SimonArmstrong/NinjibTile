@@ -30,6 +30,5 @@ function BuildCollision(deltaTime)
 		{
 			player.position.x += (xSpeed + 100) * deltaTime;
 		}
-
 	}
 }
