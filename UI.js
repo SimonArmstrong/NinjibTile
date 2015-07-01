@@ -31,26 +31,26 @@ for(var i=0; i<lives; i++)
 function GoldDisplay()
 {
 	context.fillStyle = "yellow";
-	context.font = "24px Arial";
+	context.font = "24px Lucida Sans Unicode";
 	var moneyText = "Gold: " + player.money;
-	context.fillText (moneyText, canvas.width - 100, 25 ); 
+	context.fillText (moneyText, canvas.width - 150, 25 ); 
 } 
 
 function LifeDisplay()
 {
-	context.fillStyle = "red";
-	context.font = "24px Arial";
-	var healthText = "Lives: " + player.health;
-	context.fillText (healthText, canvas.width - 750, 25 );
+	//context.fillStyle = "white";
+	//context.font = "25px Lucida Sans Unicode";
+	//var healthText = "Lives: " //+ player.health;
+	//context.fillText (healthText, canvas.width - 750, 25 );
 
 	var heartImage = document.createElement("img");
-	heartImage.src = "notHeart1.png";
+	heartImage.src = "notHeart2.png";
 	
 	//var heartImage.position = new Vector2 (16, 16);
 	
 	for(var i = 0; i < player.health; i++)
 	{
-		context.drawImage(heartImage, 200 + ((16 + 2) * i), 10);
+		context.drawImage(heartImage, canvas.width - 725  + ((32 + 2) * i), -1);
 	}
 	
 
