@@ -24,7 +24,6 @@ enemies.push(Rat8);
 
 function BuildEntities(deltaTime)
 {
-	YOU SHALL NOT PASS!
 	if(player.direction == 4)
 	{
 		sword.position = new Vector2(player.position.x + 32, player.position.y);
