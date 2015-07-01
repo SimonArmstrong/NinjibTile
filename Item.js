@@ -28,7 +28,7 @@ items.push(new Item("Leather Boots", 10, 0, 2));
 items.push(new Item("Chain Boots", 20, 0, 7));
 items.push(new Item("Iron Boots", 35, 0, 13));
 
-items.push(new Item("Wooden Sword", 20, 5, 0));
+items.push(new Item("Wooden Sword", 20, 1, 0));
 items.push(new Item ("Stone Sword", 35, 10, 0));
 items.push(new Item("Bronze Sword", 50, 16, 0));
 items.push(new Item ("Steel Sword", 100, 25, 0));
