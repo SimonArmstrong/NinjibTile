@@ -27,22 +27,44 @@ enemies.push(Rat8);
 */
 function BuildEntities(deltaTime)
 {
-	if(player.direction == 4)
+if(player.direction == 4)
 	{
-		sword.position = new Vector2(player.position.x + 32, player.position.y);
+		sword.position = new Vector2(player.position.x + 50, player.position.y + 10);
+		sword.image = ("sword2.png");
+		if(sword.isAttacking == true && player.direction == 4)
+		{
+			player.image = ("test_player4.png");
+		}
 	}
 	if(player.direction == 2)
 	{
-		sword.position = new Vector2(player.position.x, player.position.y + 32);
+		sword.position = new Vector2(player.position.x +10, player.position.y + 50);
+		sword.image = ("sword3.png");
+		if(sword.isAttacking == true && player.direction == 2)
+		{
+			player.image = ("test_player3.png");
+		}
 	}
 	if(player.direction == 3)
 	{
-		sword.position = new Vector2(player.position.x - 32, player.position.y);
+		sword.position = new Vector2(player.position.x - 64, player.position.y);
+		sword.image = ("sword4.png");
+		if(sword.isAttacking == true && player.direction == 3)
+		{
+			player.image = ("test_player5.png");
+		}
 	}
 	if(player.direction == 1)
 	{
-		sword.position = new Vector2(player.position.x, player.position.y - 32);
+		sword.position = new Vector2(player.position.x + 20, player.position.y - 50);
+		sword.image = ("sword.png");
+		if(sword.isAttacking == true && player.direction == 1)
+		{
+			player.image = ("test_player6.png");
+		}
 	}
+	
+	sword.update();
 	
 	player.trigger = new Collider("player_trigger", new Vector2(256, 256), new Vector2(player.position.x - 114, player.position.y - 114));
 	
