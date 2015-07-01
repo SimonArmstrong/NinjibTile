@@ -30,9 +30,17 @@ for(var i=0; i<lives; i++)
 // This is the money display
 function GoldDisplay()
 {
+	var coinImage = document.createElement("img");
+	coinImage.src = "coin-pug.png";
+	
+		for(var i = 0; i < player.health; i++)
+	{
+		context.drawImage(coinImage,  canvas.width - 140, 0 );
+	}
+
 	context.fillStyle = "yellow";
 	context.font = "24px Lucida Sans Unicode";
-	var moneyText = "Gold: " + player.money;
+	var moneyText = "      " + player.money;
 	context.fillText (moneyText, canvas.width - 150, 25 ); 
 } 
 
