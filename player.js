@@ -7,6 +7,8 @@ var Player = function(image)
 	this.scale = new Vector2(32, 32);
 	this.direction = 0;
 	
+	this.collider = new Collider("player_hitbox", this.scale, this.position);
+	
 	this.health = 3;
 	this.defense = 1;
 	this.exp = 0;

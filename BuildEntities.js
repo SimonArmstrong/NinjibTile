@@ -123,6 +123,15 @@ function BuildEntities(deltaTime)
 			enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
 		}
 		player.trigger.draw("#f00");
+		
+		if(player.collider.isTouching(enemies[i].collider))
+		{
+			player.health -= 1;
+		}
+		if(player.health <= 0)
+		{
+			player.sprite = ("test_playerdead.png");
+		}
 	}
 	
 	for(var i = 0; i <= enemies.length - 1; i++)
@@ -157,14 +166,14 @@ function BuildEntities(deltaTime)
 	
 	EnemyAI();
 	
+	
+	
 	player.position.y -= ySpeed * deltaTime;
 	player.position.x -= xSpeed * deltaTime;	
 
 		
 	for(var i = 0; i <= enemies.length - 1; i++)
 	{
-
-		
 		if(sword.isAttacking == true)
 		{
 			if(sword.collider.isTouching(enemies[i].collider))
