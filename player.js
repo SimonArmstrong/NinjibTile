@@ -3,8 +3,8 @@ var Player = function(image)
 	this.sprite = document.createElement("img");
 	this.image = image;
 	
-	this.position = new Vector2(65, 64);
-	this.scale = new Vector2(65, 64);
+	this.position = new Vector2(64, 64);
+	this.scale = new Vector2(64, 64);
 	this.direction = 0;
 	
 	this.health = 3;
@@ -38,7 +38,7 @@ Player.prototype.draw = function()
 
 var player = new Player("test_player.png");
 
-player.equippedItem = items[18];
+player.equippedItem = items[16];
 
 if(player.exp = 5)
 {
