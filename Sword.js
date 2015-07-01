@@ -4,7 +4,7 @@ var Sword = function(image)
 	this.sprite = document.createElement("img")
 	
 	this.position = player.position;
-	this.scale = new Vector2 (32, 32);
+	this.scale = new Vector2 (64, 64);
 	
 	this.collider = new Collider("sword", this.scale, this.position);
 	
@@ -19,6 +19,11 @@ Sword.prototype.draw = function()
 }
 
 var sword = new Sword("sword.png");
+
+Sword.prototype.update = function()
+{
+	this.collider = new Collider("sword", this.scale, this.position);
+}
 
 var KEY_H = 72;
 
