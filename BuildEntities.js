@@ -1,5 +1,4 @@
 var Rat = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-/*
 var Rat2 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat3 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat4 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
@@ -7,7 +6,6 @@ var Rat5 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) +
 var Rat6 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat7 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat8 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-*/
 
 var enemies = [];
 
@@ -27,7 +25,7 @@ xSpeed = 0;
 ySpeed = 0;
 
 enemies.push(Rat);
-/*
+
 enemies.push(Rat2);
 enemies.push(Rat3);
 enemies.push(Rat4);
@@ -35,7 +33,7 @@ enemies.push(Rat5);
 enemies.push(Rat6);
 enemies.push(Rat7);
 enemies.push(Rat8);
-*/
+
 function BuildEntities(deltaTime)
 {
 if(player.direction == 4)
