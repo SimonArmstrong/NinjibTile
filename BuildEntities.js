@@ -36,42 +36,42 @@ enemies.push(Rat8);
 
 function BuildEntities(deltaTime)
 {
-if(player.direction == 4)
-	{
-		sword.position = new Vector2(player.position.x + 50, player.position.y + 10);
-		sword.image = ("sword2.png");
-		if(sword.isAttacking == true && player.direction == 4)
+	if(player.direction == 4)
 		{
-			player.image = ("test_player4.png");
+			sword.position = new Vector2(player.position.x + 25, player.position.y - 15);
+			sword.image = ("sword2.png");
+			if(sword.isAttacking == true && player.direction == 4)
+			{
+				player.image = ("test_player4.png");
+			}
 		}
-	}
-	if(player.direction == 2)
-	{
-		sword.position = new Vector2(player.position.x +10, player.position.y + 50);
-		sword.image = ("sword3.png");
-		if(sword.isAttacking == true && player.direction == 2)
+		if(player.direction == 2)
 		{
-			player.image = ("test_player3.png");
+			sword.position = new Vector2(player.position.x - 10, player.position.y + 20);
+			sword.image = ("sword3.png");
+			if(sword.isAttacking == true && player.direction == 2)
+			{
+				player.image = ("test_player3.png");
+			}
 		}
-	}
-	if(player.direction == 3)
-	{
-		sword.position = new Vector2(player.position.x - 50, player.position.y + 13);
-		sword.image = ("sword4.png");
-		if(sword.isAttacking == true && player.direction == 3)
+		if(player.direction == 3)
 		{
-			player.image = ("test_player5.png");
+			sword.position = new Vector2(player.position.x - 50, player.position.y - 15);
+			sword.image = ("sword4.png");
+			if(sword.isAttacking == true && player.direction == 3)
+			{
+				player.image = ("test_player5.png");
+			}
 		}
-	}
-	if(player.direction == 1)
-	{
-		sword.position = new Vector2(player.position.x + 20, player.position.y - 50);
-		sword.image = ("sword.png");
-		if(sword.isAttacking == true && player.direction == 1)
+		if(player.direction == 1)
 		{
-			player.image = ("test_player6.png");
+			sword.position = new Vector2(player.position.x - 5, player.position.y - 50);
+			sword.image = ("sword.png");
+			if(sword.isAttacking == true && player.direction == 1)
+			{
+				player.image = ("test_player6.png");
+			}
 		}
-	}
 	
 	sword.update();
 	
