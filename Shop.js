@@ -20,15 +20,15 @@ function BuildShop()
 		{
 			if(i <= 9)
 			{
-				buttons.push(new Button(items[i], new Vector2(10 + (68 * i), 10)));
+				buttons.push(new Button(items[i], new Vector2(58 + (68 * i), 60)));
 			}
 			if(i >= 10 && i <= 19)
 			{
-				buttons.push(new Button(items[i], new Vector2(10 + (68 * (i - 10)), 78)));
+				buttons.push(new Button(items[i], new Vector2(58 + (68 * (i - 10)), 128)));
 			}
 			if(i >= 20 && i <= 29)
 			{
-				buttons.push(new Button(items[i], new Vector2(10 + (68 * (i - 20)), 146)));
+				buttons.push(new Button(items[i], new Vector2(58 + (68 * (i - 20)), 196)));
 			}
 		}
 		

@@ -4,7 +4,7 @@ var STATE_SHOP = 2;
 var STATE_MENU = 3;	
 var STATE_GAMEOVER = 4;
 
-var gameState = STATE_GAME;
+var gameState = STATE_SHOP;
 var loadSeconds = 2;
 
 var MOVE_UP = false;
@@ -73,7 +73,6 @@ function KeyDown(e)
 					player.direction = 4;
 				}
 			break;
-
 			// Press ESC
 			case KEY_ESC:
 				gameState = STATE_MENU;				
@@ -81,18 +80,16 @@ function KeyDown(e)
 			// Press Enter
 			case KEY_ENTER:
 				gameState = STATE_SHOP;	
-			break;			
+			break;		
 		}
 	}
 	
 	if(gameState === STATE_SHOP)
 	{
-		
-		
 		switch(e.keyCode)
 		{
 			case KEY_ENTER:
-				gameState = STATE_GAME
+				gameState = STATE_GAME;
 			break;
 		}
 	}
