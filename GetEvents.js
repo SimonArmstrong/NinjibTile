@@ -4,7 +4,7 @@ var STATE_SHOP = 2;
 var STATE_MENU = 3;	
 var STATE_GAMEOVER = 4;
 
-var gameState = STATE_LOADING;
+var gameState = STATE_GAME;
 var loadSeconds = 2;
 
 var MOVE_UP = false;

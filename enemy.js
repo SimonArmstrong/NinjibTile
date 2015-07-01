@@ -1,4 +1,4 @@
-var Enemy = function(name, level, image)
+var Enemy = function(name, level, image, dir)
 {
 	this.name = name;
 	this.level = level;
@@ -17,11 +17,23 @@ var Enemy = function(name, level, image)
 	
 	this.speed = player.speed/2;
 	
+	this.enemyRandDirect = dir;
+	
 	this.damage = 1;
 	
 	this.isDead = false;
 	
 	this.exp = 1 + level;
+	
+	this.ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x + (this.scale.x / 2), this.position.y));
+	this.ENEMY_RIGHT  = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x + this.scale.x, this.position.y + (this.scale.y / 2)));
+	this.ENEMY_LEFT   = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x, this.position.y + (this.scale.y / 2)));
+	this.ENEMY_BOTTOM = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x + (this.scale.x / 2), this.position.y + this.scale.y));
+	
+	this.enemyMTime = 2;
+	
+	this.enemySpeedX = 0;
+	this.enemySpeedY = 0;
 };
 
 Enemy.prototype.draw = function()

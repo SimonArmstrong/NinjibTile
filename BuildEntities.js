@@ -1,46 +1,113 @@
-var Rat = new Enemy("Rat", 1, "Rat_Image.png");
+var Rat = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+var Rat2 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+var Rat3 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+var Rat4 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+var Rat5= new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+var Rat6 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+var Rat7 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+var Rat8 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 
-var xSpeed = 0;
-var ySpeed = 0;
+var enemies = [];
 
-var enemySpeedX = 0;
-var enemySpeedY = 0;
+xSpeed = 0;
+ySpeed = 0;
 
+enemies.push(Rat);
+enemies.push(Rat2);
+enemies.push(Rat3);
+enemies.push(Rat4);
+enemies.push(Rat5);
+enemies.push(Rat6);
+enemies.push(Rat7);
+enemies.push(Rat8);
 
-function EnemyAI()
-{
-	var enemyRandDirect = Math.floor((Math.random() * 4) + 1)
-	switch(enemyRandDirect)
-	{
-		case 1:
-		enemySpeedY = Rat.speed;
-		enemySpeedX = 0;
-		break;
-		case 2:
-		enemySpeedY = -Rat.speed;
-		enemySpeedX = 0;
-		break;
-		case 3:
-		enemySpeedX = Rat.speed;
-		enemySpeedY = 0;
-		break;
-		case 4:
-		enemySpeedX = -Rat.speed;
-		enemySpeedY = 0;
-		break;
-	}
-}
-EnemyAI();
 function BuildEntities(deltaTime)
 {
+	for(var i = 0; i <= enemies.length - 1; i++)
+	{
+		enemies[i].ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y));
+		enemies[i].ENEMY_RIGHT  = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + enemies[i].scale.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
+		enemies[i].ENEMY_LEFT   = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
+		enemies[i].ENEMY_BOTTOM = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y + enemies[i].scale.y));		
+	}
 	
-	Rat.position.y -= enemySpeedX * deltaTime;
-	Rat.position.x -= enemySpeedY * deltaTime;
+	for(var i = 0; i <= enemies.length - 1; i++)
+	{
+		for(var j = 0; j <= walls.length - 1; j++)
+		{
+			if(enemies[i].ENEMY_UP.isTouching(walls[j].collider) === true)
+			{
+				enemies[i].enemyRandDirect = 4;
+			}
+			if(enemies[i].ENEMY_RIGHT.isTouching(walls[j].collider) === true)
+			{
+				enemies[i].enemyRandDirect = 1;
+			}
+
+			if(enemies[i].ENEMY_BOTTOM.isTouching(walls[j].collider) === true)
+			{
+				enemies[i].enemyRandDirect = 3;
+			}
+
+			if(enemies[i].ENEMY_LEFT.isTouching(walls[j].collider) === true)
+			{
+				enemies[i].enemyRandDirect = 2;
+			}
+		}
+	
+	}
+	
+	EnemyAI();
 	
 	player.position.y -= ySpeed * deltaTime;
 	player.position.x -= xSpeed * deltaTime;	
 
-	Rat.draw();
+		
+	for(var i = 0; i <= enemies.length - 1; i++)
+	{
+		enemies[i].enemyMTime -= deltaTime;
+		
+		if(enemies[i].enemyMTime <= 0)
+		{
+			enemies[i].enemyRandDirect = Math.floor((Math.random() * 4) + 1);
+			enemies[i].enemyMTime = 2;
+		}
+		
+		enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
+		enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
+		enemies[i].draw();
+		
+		enemies[i].ENEMY_UP.draw("#f00");
+		enemies[i].ENEMY_RIGHT.draw("#f00");
+		enemies[i].ENEMY_LEFT.draw("#f00");
+		enemies[i].ENEMY_BOTTOM.draw("#f00");
+	}
+	
 	player.draw();
 	sword.draw();
+}
+function EnemyAI()
+{
+	for(var i = 0; i <= enemies.length - 1; i++)
+	{
+		switch(enemies[i].enemyRandDirect)
+		{
+			case 1:
+			enemies[i].enemySpeedY = enemies[i].speed;
+			enemies[i].enemySpeedX = 0;
+			break;
+			case 2:
+			enemies[i].enemySpeedY = -enemies[i].speed;
+			enemies[i].enemySpeedX = 0;
+			break;
+			case 3:
+			enemies[i].enemySpeedX = enemies[i].speed;
+			enemies[i].enemySpeedY = 0;
+			break;
+			case 4:
+			enemies[i].enemySpeedX = -enemies[i].speed;
+			enemies[i].enemySpeedY = 0;
+			break;
+		}
+	}
 }
