@@ -30,21 +30,15 @@ function getDeltaTime()
 //-------------------- Don't modify anything above here-----------------------------------------------------------------------------------------------
 
 
-	function initialize() 
-	{
-
-			musicBackground = new Howl
-			(
-				{
-					urls: ["Castlevania-II-Simons-Quest-NES-Music-Final-Battle-Last-Boss.mp3"],
-					loop: true,
-					buffer: true,
-					volume: 0.5
-				} 
-			);
+		//Background music
 			
-			musicBackground.play();
-	}
+			var musicBackground = new Howl({
+			urls: ["Castlevania-II-Simons-Quest-NES-Music-Castle-Theme-01-Dwellings-of-Doom.mp3.mp3"], 
+			loop: false, 
+			buffer: true, 
+			volume: 0.5
+			} );	
+			musicBackground.play();				
 
 function run()
 {
@@ -68,6 +62,8 @@ function run()
 		BuildWalls();
 		GoldDisplay();
 		LifeDisplay();
+
+
 
 		
 		if(player.health <= 0)
@@ -104,6 +100,6 @@ function run()
 	}		
 }
 
-initialize();
+
 
 States();
