@@ -2,6 +2,7 @@ var Player = function(image)
 {
 	this.sprite = document.createElement("img");
 	this.image = image;
+
 	
 	this.position = new Vector2(32, 32);
 	this.scale = new Vector2(32, 32);
@@ -13,6 +14,8 @@ var Player = function(image)
 	this.level = 1;
 	
 	this.speed = 180;
+	
+	this.trigger;
 	
 	this.equippedItem;
 	

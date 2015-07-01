@@ -22,6 +22,6 @@ Collider.prototype.isTouching = function(col)
 Collider.prototype.draw = function(color)
 {
 	context.fillStyle = color;
-	context.fillRect(this.position.x, this.position.y, this.scale.x * 3, this.scale.y * 3);
+	context.fillRect(this.position.x, this.position.y, this.scale.x, this.scale.y);
 }
 
