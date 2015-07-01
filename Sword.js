@@ -32,6 +32,7 @@ function keyDown(e)
 	if(e.keyCode == KEY_H)
 	{
 		sword.isAttacking = true;
+		player.image = ("test_player3.png");
 	}
 }
 window.addEventListener('keydown', keyDown);
@@ -40,6 +41,7 @@ function keyUp(e)
 	if(e.keyCode == KEY_H)
 	{
 		sword.isAttacking = false;
+		player.image = ("test_player.png");
 	}
 }
 window.addEventListener('keyup', keyUp);
