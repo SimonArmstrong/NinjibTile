@@ -1,10 +1,12 @@
-// This is the Health display
-/*var Heart = function (image)
+
+/*
+var Heart = function(image)
 {
 	this.sprite = document.createElement("img");
-	this.image = image;	
+	this.image = image;
 	
-	//this.position = new Vector2(16, 16);
+	this.position = new Vector2(16, 16);
+	this.scale = new Vector2(16, 16);
 }
 
 Heart.prototype.draw = function()
@@ -13,25 +15,17 @@ Heart.prototype.draw = function()
 	context.drawImage(this.sprite, this.position.x, this.position.y);
 }
 
-
-var heart = new Heart ("notHeart.png");
-*/
-//var heartImage = "notHeart.png"
-
-function LifeDisplay()
-{
-	context.fillStyle = "red";
-	context.font = "24px Arial";
-	var healthText = "Lives: " + player.health;
-	context.fillText (healthText, canvas.width - 750, 25 ) 
+var Heart = new heartImage("notHeart.png");
 	
-	/*for (var i = 0; i < player.health; i++ ) 
+	var lives = 3;
+	
+for(var i=0; i<lives; i++)
 	{
-		context.drawImage(heartImage, 20 + ((heartImage.width+2)*i), 10);
-	}*/
-} 
-
-
+		context.drawImage(heartImage, 20 + ((Heart.heartImage+2)*i), 10);
+	}
+	
+	
+}*/
 
 // This is the money display
 function GoldDisplay()
@@ -39,5 +33,28 @@ function GoldDisplay()
 	context.fillStyle = "yellow";
 	context.font = "24px Arial";
 	var moneyText = "Gold: " + player.money;
-	context.fillText (moneyText, canvas.width - 100, 25 ) 
+	context.fillText (moneyText, canvas.width - 100, 25 ); 
 } 
+
+function LifeDisplay()
+{
+	context.fillStyle = "red";
+	context.font = "24px Arial";
+	var healthText = "Lives: " + player.health;
+	context.fillText (healthText, canvas.width - 750, 25 );
+
+	var heartImage = document.createElement("img");
+	heartImage.src = "notHeart.png";
+	
+	//var heartImage.position = new Vector2 (16, 16);
+	
+	for(var i = 0; i < player.health; i++)
+	{
+		context.drawImage(heartImage, 200 + ((16 + 2) * i), 10);
+	}
+	
+
+} 
+
+
+
