@@ -1,7 +1,7 @@
 var Enemy = function(name, level, image)
 {
 	this.name = name;
-	this.level = 0;
+	this.level = level;
 	
 	this.sprite = document.createElement("img");
 	this.image = image;
@@ -12,6 +12,8 @@ var Enemy = function(name, level, image)
 	this.position = new Vector2(Math.floor((Math.random() * 702) + 34), Math.floor((Math.random() * 382) + 34));
 	this.scale = new Vector2(32, 32);
 	this.direction = 0;
+	
+	this.collider = new Collider(name, this.scale, this.position);
 	
 	this.speed = player.speed/2;
 	
