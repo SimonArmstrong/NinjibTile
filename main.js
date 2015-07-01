@@ -1,44 +1,12 @@
-var canvas = document.getElementById("gameCanvas");
-var context = canvas.getContext("2d");
+//Background music
+var musicBackground = new Howl({
+	urls: ["Castlevania-II-Simons-Quest-NES-Music-Castle-Theme-01-Dwellings-of-Doom.mp3.mp3"], 
+	loop: false, 
+	buffer: true, 
+	volume: 0.5
+} );	
 
-var startFrameMillis = Date.now();
-var endFrameMillis = Date.now();
-
-// This function will return the time in seconds since the function 
-// was last called
-// You should only call this function once per frame
-function getDeltaTime()
-{
-	endFrameMillis = startFrameMillis;
-	startFrameMillis = Date.now();
-
-		// Find the delta time (dt) - the change in time since the last drawFrame
-		// We need to modify the delta time to something we can use.
-		// We want 1 to represent 1 second, so if the delta is in milliseconds
-		// we divide it by 1000 (or multiply by 0.001). This will make our 
-		// animations appear at the right speed, though we may need to use
-		// some large values to get objects movement and rotation correct
-	var deltaTime = (startFrameMillis - endFrameMillis) * 0.001;
-	
-		// validate that the delta is within range
-	if(deltaTime > 1)
-		deltaTime = 1;
-		
-	return deltaTime;
-}
-
-//-------------------- Don't modify anything above here-----------------------------------------------------------------------------------------------
-
-
-		//Background music
-			
-			var musicBackground = new Howl({
-			urls: ["Castlevania-II-Simons-Quest-NES-Music-Castle-Theme-01-Dwellings-of-Doom.mp3.mp3"], 
-			loop: false, 
-			buffer: true, 
-			volume: 0.5
-			} );	
-			musicBackground.play();				
+musicBackground.play();				
 
 function run()
 {
@@ -63,9 +31,6 @@ function run()
 		GoldDisplay();
 		LifeDisplay();
 
-
-
-		
 		if(player.health <= 0)
 		{
 			gameState = STATE_GAMEOVER;
@@ -73,12 +38,8 @@ function run()
 	}	
 	
 	if (gameState === STATE_SHOP)
-	{
-		context.fillStyle = "#000";
-		context.font="24px Arial";
-		context.fillText("SHOP", 200, 240);
-
-		//BuildShop();
+	{		
+		BuildShop();
 	}
 	
 	if (gameState === STATE_MENU)
@@ -99,7 +60,5 @@ function run()
 		context.fillText("Press 'SPACE' to continue...", 200, 280);
 	}		
 }
-
-
 
 States();
