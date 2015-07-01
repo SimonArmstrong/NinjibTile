@@ -23,12 +23,40 @@ enemies.push(Rat8);
 
 function BuildEntities(deltaTime)
 {
+	if(player.direction == 4)
+	{
+		sword.position = new Vector2(player.position.x + 32, player.position.y);
+	}
+	if(player.direction == 2)
+	{
+		sword.position = new Vector2(player.position.x, player.position.y + 32);
+	}
+	if(player.direction == 3)
+	{
+		sword.position = new Vector2(player.position.x - 32, player.position.y);
+	}
+	if(player.direction == 1)
+	{
+		sword.position = new Vector2(player.position.x, player.position.y - 32);
+	}
+	
+
+	if(sword.isAttacking == true)
+	{
+		sword.draw();
+	}
+	
 	for(var i = 0; i <= enemies.length - 1; i++)
 	{
 		enemies[i].ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y));
 		enemies[i].ENEMY_RIGHT  = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + enemies[i].scale.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
 		enemies[i].ENEMY_LEFT   = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
 		enemies[i].ENEMY_BOTTOM = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y + enemies[i].scale.y));		
+		if(sword.collider.isTouching(enemies[i].collider))
+		{
+			enemies[i].health -= sword.damage;
+			console.log ("hit");
+		}
 	}
 	
 	for(var i = 0; i <= enemies.length - 1; i++)
@@ -84,7 +112,7 @@ function BuildEntities(deltaTime)
 	}
 	
 	player.draw();
-	sword.draw();
+	
 }
 function EnemyAI()
 {
