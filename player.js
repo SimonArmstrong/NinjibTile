@@ -15,7 +15,7 @@ var Player = function(image)
 	this.speed = 180;
 	
 	this.trigger;
-	
+
 	this.equippedItem;
 	
 	this.money = 0;

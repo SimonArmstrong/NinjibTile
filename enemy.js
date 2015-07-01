@@ -15,7 +15,7 @@ var Enemy = function(name, level, image, dir)
 	
 	this.collider = new Collider(name, this.scale, this.position);
 	
-	this.speed = player.speed/2;
+	this.speed = player.speed * (1/3);
 	
 	this.enemyRandDirect = dir;
 	
