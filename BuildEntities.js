@@ -75,7 +75,7 @@ function BuildEntities(deltaTime)
 	
 	sword.update();
 	
-	player.trigger = new Collider("player_trigger", new Vector2(256, 256), new Vector2(player.position.x - 97, player.position.y - 105));
+	player.trigger = new Collider("player_trigger", new Vector2(256, 256), new Vector2(player.position.x - 114, player.position.y - 114));
 	
 	for(var i = 0; i <= enemies.length - 1; i++)
 	{
