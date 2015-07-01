@@ -10,11 +10,14 @@ var Enemy = function(name, level, image)
 	this.enemyCount = 3 + level;
 	
 	this.position = new Vector2(Math.floor((Math.random() * 702) + 34), Math.floor((Math.random() * 382) + 34));
+	this.scale = new Vector2(32, 32);
 	this.direction = 0;
 	
 	this.speed = player.speed/2;
 	
 	this.damage = 1;
+	
+	this.isDead = false;
 	
 	this.exp = 1 + level;
 };
