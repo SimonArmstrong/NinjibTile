@@ -49,6 +49,8 @@ function run()
 		BuildMap();
 		BuildEntities(deltaTime);
 		BuildWalls();
+		GoldDisplay();
+		LifeDisplay();
 		
 		if(player.health <= 0)
 		{
