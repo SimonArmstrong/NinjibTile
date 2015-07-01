@@ -25,6 +25,25 @@ enemies.push(Rat8);
 
 function BuildEntities(deltaTime)
 {
+	if(player.direction == 4)
+	{
+		sword.position = new Vector2(player.position.x + 32, player.position.y);
+	}
+	if(player.direction == 2)
+	{
+		sword.position = new Vector2(player.position.x, player.position.y + 32);
+	}
+	if(player.direction == 3)
+	{
+		sword.position = new Vector2(player.position.x - 32, player.position.y);
+	}
+	if(player.direction == 1)
+	{
+		sword.position = new Vector2(player.position.x, player.position.y - 32);
+	}
+	
+
+	
 	player.trigger = new Collider("player_trigger", new Vector2(256, 256), new Vector2(player.position.x - 114, player.position.y - 114));
 	for(var i = 0; i <= enemies.length - 1; i++)
 	{
@@ -96,6 +115,20 @@ function BuildEntities(deltaTime)
 		
 		enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
 		enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
+		
+		if(sword.isAttacking == true)
+		{
+			if(sword.collider.isTouching(enemies[i].collider))
+			{
+				enemies[i].health -= sword.damage;
+				if(enemies[i].health > 0)
+				{
+					
+				}
+				console.log ("hit");
+			}
+			sword.draw();
+		}
 		enemies[i].draw();
 		
 		//Enemy collider draw
@@ -107,7 +140,6 @@ function BuildEntities(deltaTime)
 		*/
 	}
 	player.draw();
-	sword.draw();
 }
 function EnemyAI()
 {
