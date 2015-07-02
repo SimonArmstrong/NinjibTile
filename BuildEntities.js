@@ -3,10 +3,10 @@ var Rat = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 
 var Rat2 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat3 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat4 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-var Slime = new Enemy("Slime", 2, "test_enemy.png", Math.floor((Math.random() * 4) + 1));
-var Slime2 = new Enemy("Slime", 2, "test_enemy.png", Math.floor((Math.random() * 4) + 1));
-var Slime3 = new Enemy("Slime", 2, "test_enemy.png", Math.floor((Math.random() * 4) + 1));
-var Slime4 = new Enemy("Slime", 2, "test_enemy.png", Math.floor((Math.random() * 4) + 1));
+var Slime = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
+var Slime2 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
+var Slime3 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
+var Slime4 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
 
 var enemies = [];
 

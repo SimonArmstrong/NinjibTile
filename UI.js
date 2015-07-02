@@ -52,7 +52,7 @@ function LifeDisplay()
 	//context.fillText (healthText, canvas.width - 750, 25 );
 
 	var heartImage = document.createElement("img");
-	heartImage.src = "notHeart2.png";
+	heartImage.src = "notHeart3.png";
 	
 	//var heartImage.position = new Vector2 (16, 16);
 	
