@@ -48,7 +48,7 @@ function run()
 		BuildCollision(deltaTime);
 		BuildMap();
 		BuildEntities(deltaTime);
-		BuildWalls();
+		BuildWalls(deltaTime);
 		GoldDisplay();
 		LifeDisplay();
 		mistEmitter1.draw();
