@@ -49,8 +49,7 @@ function BuildEntities(deltaTime)
 			else
 			{
 				player.image = ("test_player4.png");
-			}
-			
+			}	
 		}
 
 		if(player.direction == 2)
