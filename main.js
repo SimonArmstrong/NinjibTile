@@ -3,8 +3,15 @@ var musicBackground = new Howl({
 	urls: ["Legend of Zelda - NES - Dungeon Theme.mp3"], 
 	loop: false, 
 	buffer: true, 
-	volume: 0.5
+	volume: 0.3
 } );	
+
+var deathSound = new Howl({
+	urls: ["eeyow.mp3"], 
+	loop: false, 
+	buffer: true, 
+	volume: 0.7
+} );
 
 musicBackground.play();				
 
@@ -51,6 +58,7 @@ function run()
 		if(player.health <= 0)
 		{
 			gameState = STATE_GAMEOVER;
+			deathSound.play();
 		}				
 	}	
 	
