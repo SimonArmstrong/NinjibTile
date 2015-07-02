@@ -57,6 +57,11 @@ function BuildShop()
 				buttons[i].item.bought = true;
 				clicked = false;
 				console.log("Just Purchased " + buttons[i].item.name + " for $" + buttons[i].item.cost);
+				
+				if(buttons[i].item.type === "weapon")
+				{
+					player.equippedItem = buttons[i].item.damage;
+				}
 			}
 			
 			if(buttons[i].MouseOver() === true)

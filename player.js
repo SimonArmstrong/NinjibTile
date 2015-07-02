@@ -22,6 +22,10 @@ var Player = function(image)
 	this.blinkSpeed = 0.5;
 	
 	this.equippedItem;
+	this.equippedHat;
+	this.equippedShoes;
+	this.equippedPants;
+	this.equippedShirt;
 	
 	this.money = 0;
 	
@@ -67,6 +71,11 @@ var FACE_LEFT = new Collider("player", new Vector2(1, 1), new Vector2(player.pos
 var FACE_BOTTOM = new Collider("player", new Vector2(1, 1), new Vector2(player.position.x + (player.scale.x / 2), player.position.y + player.scale.y));
 
 player.equippedItem = items[16].damage;
+player.equippedShirt = items[0].defense;
+player.equippedHat = items[8].defense;
+player.equippedPants = items[4].defense;
+player.equippedShoes = items[12].defense;
+
 
 if(player.exp = 5)
 {
