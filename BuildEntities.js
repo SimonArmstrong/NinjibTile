@@ -37,9 +37,9 @@ function BuildEntities(deltaTime)
 {
 	if(player.direction == 4)
 		{
-			sword.position = new Vector2(player.position.x + 25, player.position.y - 15);
+			sword.position = new Vector2(player.position.x + 25, player.position.y + 8);
 			sword.image = ("sword2.png");
-			sword.scale = new Vector2(64,32);
+			sword.scale = new Vector2(32,16);
 			if(sword.isAttacking == true && player.direction == 4)
 			{
 				player.image = ("test_player8.png");
@@ -53,9 +53,9 @@ function BuildEntities(deltaTime)
 
 		if(player.direction == 2)
 		{
-			sword.position = new Vector2(player.position.x - 10, player.position.y + 20);
+			sword.position = new Vector2(player.position.x + 8, player.position.y + 20);
 			sword.image = ("sword3.png");
-			sword.scale = new Vector2(32,64);
+			sword.scale = new Vector2(16,32);
 			if(sword.isAttacking == true && player.direction == 2)
 			{
 				player.image = ("test_player3.png");
@@ -67,9 +67,9 @@ function BuildEntities(deltaTime)
 		}
 		if(player.direction == 3)
 		{
-			sword.position = new Vector2(player.position.x - 50, player.position.y - 15);
+			sword.position = new Vector2(player.position.x - 25, player.position.y + 7);
 			sword.image = ("sword4.png");
-			sword.scale = new Vector2(64,32);
+			sword.scale = new Vector2(32,16);
 			if(sword.isAttacking == true && player.direction == 3)
 			{
 				player.image = ("test_player9.png");
@@ -81,9 +81,9 @@ function BuildEntities(deltaTime)
 		}
 		if(player.direction == 1)
 		{
-			sword.position = new Vector2(player.position.x - 5, player.position.y - 50);
+			sword.position = new Vector2(player.position.x + 10, player.position.y - 25);
 			sword.image = ("sword.png");
-			sword.scale = new Vector2(32,64);
+			sword.scale = new Vector2(16,32);
 			if(sword.isAttacking == true && player.direction == 1)
 			{
 				player.image = ("test_player7.png");
@@ -320,7 +320,6 @@ function BuildEntities(deltaTime)
 					enemies[i].isDead = true;
 					enemies[i].collider = new Collider(name, new Vector2(0, 0), new Vector2(0 ,0));
 				}
-				console.log ("hit");
 			}
 			sword.draw();
 		}

@@ -4,7 +4,7 @@ var Sword = function(image)
 	this.sprite = document.createElement("img")
 	
 	this.position = player.position;
-	this.scale = new Vector2 (64, 64);
+	this.scale = new Vector2 (32, 32);
 	
 	this.collider = new Collider("sword", this.scale, this.position);
 	
