@@ -2,10 +2,10 @@ var Rat = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 
 var Rat2 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat3 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat4 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-var Rat5 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-var Rat6 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-var Rat7 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-var Rat8 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+var Slime = new Enemy("Slime", 2, "test_enemy.png", Math.floor((Math.random() * 4) + 1));
+var Slime2 = new Enemy("Slime", 2, "test_enemy.png", Math.floor((Math.random() * 4) + 1));
+var Slime3 = new Enemy("Slime", 2, "test_enemy.png", Math.floor((Math.random() * 4) + 1));
+var Slime4 = new Enemy("Slime", 2, "test_enemy.png", Math.floor((Math.random() * 4) + 1));
 
 var enemies = [];
 
@@ -24,14 +24,13 @@ xSpeed = 0;
 ySpeed = 0;
 
 enemies.push(Rat);
-
 enemies.push(Rat2);
 enemies.push(Rat3);
 enemies.push(Rat4);
-enemies.push(Rat5);
-enemies.push(Rat6);
-enemies.push(Rat7);
-enemies.push(Rat8);
+enemies.push(Slime);
+enemies.push(Slime2);
+enemies.push(Slime3);
+enemies.push(Slime4);
 
 function BuildEntities(deltaTime)
 {
@@ -78,59 +77,115 @@ function BuildEntities(deltaTime)
 	
 	for(var i = 0; i <= enemies.length - 1; i++)
 	{
-		enemies[i].ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y));
-		enemies[i].ENEMY_RIGHT  = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + enemies[i].scale.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
-		enemies[i].ENEMY_LEFT   = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
-		enemies[i].ENEMY_BOTTOM = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y + enemies[i].scale.y));		
-		
-		if(enemies[i].collider.isTouching(player.trigger))
+		if(enemies[i].BehaviourType === "Rat")
 		{
-			if(enemies[i].position.y < player.position.y + 16)
+			enemies[i].ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y));
+			enemies[i].ENEMY_RIGHT  = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + enemies[i].scale.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
+			enemies[i].ENEMY_LEFT   = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
+			enemies[i].ENEMY_BOTTOM = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y + enemies[i].scale.y));		
+			
+			if(enemies[i].collider.isTouching(player.trigger))
 			{
-				enemies[i].enemyRandDirect = 4;
+				if(enemies[i].position.y < player.position.y + 16)
+				{
+					enemies[i].enemyRandDirect = 4;
+				}
+				if(enemies[i].position.y > player.position.y - 16)
+				{
+					enemies[i].enemyRandDirect = 3;
+				}
+				if(enemies[i].position.y >= player.position.y - 16 && enemies[i].position.y <= player.position.y + 16)
+				{
+					if(enemies[i].position.x < player.position.x)
+					{
+						enemies[i].enemyRandDirect = 2;
+					}
+					if(enemies[i].position.x > player.position.x)
+					{
+						enemies[i].enemyRandDirect = 1;
+					}
+				}
+				enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
+				enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
 			}
-			if(enemies[i].position.y > player.position.y - 16)
+			else
 			{
-				enemies[i].enemyRandDirect = 3;
+				//Enemy wanders
+				enemies[i].enemyMTime -= deltaTime;
+			
+				if(enemies[i].enemyMTime <= 0)
+				{
+					enemies[i].enemyRandDirect = Math.floor((Math.random() * 4) + 1);
+					enemies[i].enemyMTime = 2;
+				}
+				
+				enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
+				enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
 			}
-			if(enemies[i].position.y >= player.position.y - 16 && enemies[i].position.y <= player.position.y + 16)
+			if(player.collider.isTouching(enemies[i].collider))
 			{
-				if(enemies[i].position.x < player.position.x)
+				player.health -= 1;
+			}
+			if(player.health <= 0)
+			{
+				player.image = ("test_playerdead.png");
+			}
+		}
+		if(enemies[i].BehaviourType === "Slime")
+		{
+			enemies[i].ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y));
+			enemies[i].ENEMY_RIGHT  = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + enemies[i].scale.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
+			enemies[i].ENEMY_LEFT   = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x, enemies[i].position.y + (enemies[i].scale.y / 2)));
+			enemies[i].ENEMY_BOTTOM = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y + enemies[i].scale.y));		
+			
+			if(enemies[i].collider.isTouching(player.trigger))
+			{
+				if(enemies[i].position.x < player.position.x + 16)
 				{
 					enemies[i].enemyRandDirect = 2;
 				}
-				if(enemies[i].position.x > player.position.x)
+				if(enemies[i].position.x > player.position.x - 16)
 				{
 					enemies[i].enemyRandDirect = 1;
 				}
+				if(enemies[i].position.x >= player.position.x - 16 && enemies[i].position.x <= player.position.x + 16)
+				{
+					if(enemies[i].position.y < player.position.y)
+					{
+						enemies[i].enemyRandDirect = 4;
+					}
+					if(enemies[i].position.y > player.position.y)
+					{
+						enemies[i].enemyRandDirect = 3;
+					}
+				}
+				enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
+				enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
 			}
-			enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
-			enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
-		}
-		else
-		{
-			//Enemy wanders
-			enemies[i].enemyMTime -= deltaTime;
-		
-			if(enemies[i].enemyMTime <= 0)
+			else
 			{
-				enemies[i].enemyRandDirect = Math.floor((Math.random() * 4) + 1);
-				enemies[i].enemyMTime = 2;
-			}
+				//Enemy wanders
+				enemies[i].enemyMTime -= deltaTime;
 			
-			enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
-			enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
+				if(enemies[i].enemyMTime <= 0)
+				{
+					enemies[i].enemyRandDirect = Math.floor((Math.random() * 4) + 1);
+					enemies[i].enemyMTime = 2;
+				}
+				
+				enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
+				enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
+			}
+			if(player.collider.isTouching(enemies[i].collider))
+			{
+				player.health -= 1;
+			}
+			if(player.health <= 0)
+			{
+				player.image = ("test_playerdead.png");
+			}
 		}
-		player.trigger.draw("#f00");
-		
-		if(player.collider.isTouching(enemies[i].collider))
-		{
-			player.health -= 1;
-		}
-		if(player.health <= 0)
-		{
-			player.image = ("test_playerdead.png");
-		}
+	player.trigger.draw("#f00");
 	}
 	
 	for(var i = 0; i <= enemies.length - 1; i++)
