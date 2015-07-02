@@ -25,11 +25,11 @@ var Enemy = function(name, level, image, dir)
 	this.money = Math.floor((level*2) - (level/2));
 	if(this.money > 1)
 	{
-		console.log ("Level", this.level, this.name, " will drop ", this.money, " Pug Coins!");
+		console.log ("Level", this.level, this.name, " has ", this.health, " health and will drop ", this.money, " Pug Coins!");
 	}
 	else
 	{
-		console.log ("Level", this.level, this.name, " will drop ", this.money, " Pug Coin!");
+		console.log ("Level", this.level, this.name, " has ", this.health, " health and will drop ", this.money, " Pug Coin!");
 	}
 
 	
