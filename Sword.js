@@ -25,7 +25,7 @@ Sword.prototype.update = function()
 	this.collider = new Collider("sword", this.scale, this.position);
 }
 
-var KEY_H = 72;
+var KEY_H = 76;
 
 function keyDown(e)
 {
