@@ -8,9 +8,20 @@ var musicBackground = new Howl({
 
 musicBackground.play();				
 
+var mistEmitter1 = createMistEmitter1("mist1.png", canvas.width/2, canvas.height/2);
+var mistEmitter2 = createMistEmitter2("mist2.png", canvas.width/2, canvas.height/2);
+var mistEmitter3 = createMistEmitter3("mist3.png", canvas.width/2, canvas.height/2);
+
 function run()
 {
 	var deltaTime = getDeltaTime();
+		mistEmitter1.update(deltaTime);
+		mistEmitter2.update(deltaTime);		
+		mistEmitter3.update(deltaTime);		
+		
+		//mistEmitter1.draw();
+		//mistEmitter2.draw();
+		//mistEmitter3.draw();
 	if (gameState === STATE_LOADING)
 	{
 		loadSeconds -= deltaTime;
@@ -30,6 +41,10 @@ function run()
 		BuildWalls();
 		GoldDisplay();
 		LifeDisplay();
+		mistEmitter1.draw();
+		mistEmitter2.draw();
+		mistEmitter3.draw();
+		
 
 		if(player.health <= 0)
 		{
