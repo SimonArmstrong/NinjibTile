@@ -310,19 +310,30 @@ function BuildEntities(deltaTime)
 			enemies[i].draw();
 		}
 	
-		if(sword.isAttacking == true)
+	
+		if(sword.isAttacking === true)
 		{
-			if(sword.collider.isTouching(enemies[i].collider))
+			var attackTime = 1;
+			if(attackTime > 0)
 			{
-				enemies[i].health -= sword.damage;
-				if(enemies[i].health <= 0)
+				attackTime -= deltaTime;
+				if(sword.collider.isTouching(enemies[i].collider))
 				{
-					enemies[i].isDead = true;
-					enemies[i].collider = new Collider(name, new Vector2(0, 0), new Vector2(0 ,0));
+					enemies[i].health -= sword.damage;
+					if(enemies[i].health <= 0)
+					{
+						enemies[i].isDead = true;
+						enemies[i].collider = new Collider(name, new Vector2(0, 0), new Vector2(0 ,0));
+						player.money += 1;
+					}
+					console.log ("hit");
 				}
-				console.log ("hit");
+				sword.draw();
 			}
-			sword.draw();
+			else
+			{
+				//attackTime = 1;
+			}
 		}
 
 		
