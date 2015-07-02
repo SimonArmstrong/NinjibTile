@@ -28,7 +28,7 @@ var Emitter = function(imageFilename, positionX, positionY)
 	this.texture.src = imageFilename;
 	
 	this.position = new Vector2();
-	this.position.set(canvas.width, canvas.height);
+	this.position.set(canvas.width/2 - 23, -15);
 	
 	this.emissionSize = new Vector2();
 	this.emissionSize.set(5, 5);
