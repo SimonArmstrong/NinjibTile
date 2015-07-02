@@ -1,3 +1,4 @@
+
 var Rat = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat2 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
 var Rat3 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
@@ -38,7 +39,6 @@ function BuildEntities(deltaTime)
 		{
 			sword.position = new Vector2(player.position.x + 25, player.position.y - 15);
 			sword.image = ("sword2.png");
-			sword.scale = new Vector2(64,32);
 			if(sword.isAttacking == true && player.direction == 4)
 			{
 				player.image = ("test_player4.png");
@@ -48,7 +48,6 @@ function BuildEntities(deltaTime)
 		{
 			sword.position = new Vector2(player.position.x - 10, player.position.y + 20);
 			sword.image = ("sword3.png");
-			sword.scale = new Vector2(32,64);
 			if(sword.isAttacking == true && player.direction == 2)
 			{
 				player.image = ("test_player3.png");
@@ -58,7 +57,6 @@ function BuildEntities(deltaTime)
 		{
 			sword.position = new Vector2(player.position.x - 50, player.position.y - 15);
 			sword.image = ("sword4.png");
-			sword.scale = new Vector2(64,32);
 			if(sword.isAttacking == true && player.direction == 3)
 			{
 				player.image = ("test_player5.png");
@@ -68,7 +66,6 @@ function BuildEntities(deltaTime)
 		{
 			sword.position = new Vector2(player.position.x - 5, player.position.y - 50);
 			sword.image = ("sword.png");
-			sword.scale = new Vector2(32,64);
 			if(sword.isAttacking == true && player.direction == 1)
 			{
 				player.image = ("test_player6.png");
@@ -128,13 +125,41 @@ function BuildEntities(deltaTime)
 			}
 			if(player.collider.isTouching(enemies[i].collider))
 			{
-				player.health -= 1;
+				if(player.invulnerabilityTimer <= 0)
+				{
+					if(FACE_UP.isTouching(enemies[i].collider))
+					{
+						player.health -= 1;
+						player.position.y += 32;
+						player.invulnerabilityTimer = 5;
+					}
+					if(FACE_BOTTOM.isTouching(enemies[i].collider))
+					{
+						player.health -= 1;
+						player.position.y -= 32;
+						player.invulnerabilityTimer = 5;
+					}
+					if(FACE_LEFT.isTouching(enemies[i].collider))
+					{
+						player.health -= 1;
+						player.position.x += 32;
+						player.invulnerabilityTimer = 5;
+					}
+					if(FACE_RIGHT.isTouching(enemies[i].collider))
+					{
+						player.health -= 1;
+						player.position.x -= 32;
+						player.invulnerabilityTimer = 5;
+					}
+				}
 			}
-			if(player.health <= 0)
+			if(player.invulnerabilityTimer > 0)
 			{
-				player.image = ("test_playerdead.png");
+				player.invulnerabilityTimer -= deltaTime;
 			}
+			//console.log(player.invulnerabilityTimer);
 		}
+	
 		if(enemies[i].BehaviourType === "Slime")
 		{
 			enemies[i].ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y));
@@ -182,14 +207,43 @@ function BuildEntities(deltaTime)
 			}
 			if(player.collider.isTouching(enemies[i].collider))
 			{
-				player.health -= 1;
-			}
-			if(player.health <= 0)
-			{
-				player.image = ("test_playerdead.png");
+				if(player.collider.isTouching(enemies[i].collider))
+				{
+					if(player.invulnerabilityTimer <= 0)
+					{
+						if(FACE_UP.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.y += 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_BOTTOM.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.y -= 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_LEFT.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.x += 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_RIGHT.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.x -= 32;
+							player.invulnerabilityTimer = 5;
+						}
+					}
+				}
+				if(player.invulnerabilityTimer > 0)
+				{
+					player.invulnerabilityTimer -= deltaTime;
+				}
 			}
 		}
-	player.trigger.draw("#f00");
+		//player.trigger.draw("#f00");
 	}
 	
 	for(var i = 0; i <= enemies.length - 1; i++)
@@ -248,6 +302,7 @@ function BuildEntities(deltaTime)
 					enemies[i].isDead = true;
 					enemies[i].collider = new Collider(name, new Vector2(0, 0), new Vector2(0 ,0));
 				}
+				console.log ("hit");
 			}
 			sword.draw();
 		}
@@ -261,7 +316,7 @@ function BuildEntities(deltaTime)
 		enemies[i].ENEMY_BOTTOM.draw("#f00");
 		*/
 	}
-	player.draw();
+	player.draw(deltaTime);
 }
 function EnemyAI()
 {
