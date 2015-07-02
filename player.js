@@ -40,7 +40,7 @@ Player.prototype.draw = function()
 
 var player = new Player("test_player.png");
 
-player.equippedItem = items[16];
+player.equippedItem = items[16].damage;
 
 if(player.exp = 5)
 {

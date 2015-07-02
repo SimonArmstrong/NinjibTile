@@ -1,6 +1,6 @@
 var Sword = function(image)
 {
-	this.damage = player.equippedItem
+	this.damage = player.equippedItem;
 	this.sprite = document.createElement("img")
 	
 	this.position = player.position;

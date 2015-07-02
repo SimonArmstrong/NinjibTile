@@ -173,20 +173,27 @@ function BuildEntities(deltaTime)
 		
 	for(var i = 0; i <= enemies.length - 1; i++)
 	{
+	
+		if(enemies[i].health > 0)
+		{
+			enemies[i].draw();
+		}
+	
 		if(sword.isAttacking == true)
 		{
 			if(sword.collider.isTouching(enemies[i].collider))
 			{
 				enemies[i].health -= sword.damage;
-				if(enemies[i].health > 0)
+				if(enemies[i].health <= 0)
 				{
-					
+					enemies[i].isDead = true;
+					enemis.collider = false;
 				}
 				console.log ("hit");
 			}
 			sword.draw();
 		}
-		enemies[i].draw();
+
 		
 		//Enemy collider draw
 		/*
