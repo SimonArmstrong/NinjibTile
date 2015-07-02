@@ -58,7 +58,7 @@ function LifeDisplay()
 	
 	for(var i = 0; i < player.health; i++)
 	{
-		context.drawImage(heartImage, canvas.width - 725  + ((32 + 2) * i), -1);
+		context.drawImage(heartImage, 125  + ((32 + 2) * i), -1);
 	}
 	
 
