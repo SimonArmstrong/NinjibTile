@@ -22,6 +22,9 @@ var Enemy = function(name, level, image, dir)
 	this.isDead = false;
 	this.exp = 1 + level;
 	
+	this.money = Math.floor((level*2) - (level/2));
+	console.log (this.name, " will drop ", this.money, " Pug Coin(s)!");
+	
 	this.ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x + (this.scale.x / 2), this.position.y));
 	this.ENEMY_RIGHT  = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x + this.scale.x, this.position.y + (this.scale.y / 2)));
 	this.ENEMY_LEFT   = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x, this.position.y + (this.scale.y / 2)));
