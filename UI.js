@@ -51,8 +51,20 @@ function LifeDisplay()
 	//var healthText = "Lives: " //+ player.health;
 	//context.fillText (healthText, canvas.width - 750, 25 );
 
-	var heartImage = document.createElement("img");
-	heartImage.src = "notHeart3.png";
+	var heartImageN = document.createElement("img");
+	heartImageN.src = "notHeart3.png";
+	var heartImageA = document.createElement("img");
+	heartImageA.src = "notHeartArmour.png";
+	
+	if (player.health >= 4)
+	{
+		var heartImage = heartImageA
+	}
+	else if (player.health <= 3 && player.health > 0)
+	{
+		var heartImage = heartImageN
+	}
+	
 	
 	//var heartImage.position = new Vector2 (16, 16);
 	
