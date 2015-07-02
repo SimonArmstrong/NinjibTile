@@ -33,6 +33,8 @@ enemies.push(Slime2);
 enemies.push(Slime3);
 enemies.push(Slime4);
 
+var attackTime = 0;
+
 function BuildEntities(deltaTime)
 {
 	if(player.direction == 4)
@@ -311,12 +313,23 @@ function BuildEntities(deltaTime)
 		}
 	
 	
-		if(sword.isAttacking === true)
+		if(!sword.isAttacking === true)
 		{
-			var attackTime = 1;
+			if(attackTime <= 0)
+			{
+				attackTime -= deltaTime;
+			
+				
+				attackTime = 1;
+			}
+		}
+		else
+		{
+			
 			if(attackTime > 0)
 			{
 				attackTime -= deltaTime;
+				sword.draw();
 				if(sword.collider.isTouching(enemies[i].collider))
 				{
 					enemies[i].health -= sword.damage;
@@ -326,16 +339,9 @@ function BuildEntities(deltaTime)
 						enemies[i].collider = new Collider(name, new Vector2(0, 0), new Vector2(0 ,0));
 						player.money += 1;
 					}
-					console.log ("hit");
 				}
-				sword.draw();
-			}
-			else
-			{
-				//attackTime = 1;
 			}
 		}
-
 		
 		//Enemy collider draw
 		/*
