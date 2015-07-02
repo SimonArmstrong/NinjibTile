@@ -7,7 +7,7 @@ var Slime = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() *
 var Slime2 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
 var Slime3 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
 var Slime4 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
-
+//Hi Alex
 var enemies = [];
 
 var left  = document.createElement("img");
