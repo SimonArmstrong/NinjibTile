@@ -50,6 +50,7 @@ function BuildEntities(deltaTime)
 			}
 			
 		}
+
 		if(player.direction == 2)
 		{
 			sword.position = new Vector2(player.position.x - 10, player.position.y + 20);
@@ -221,7 +222,6 @@ function BuildEntities(deltaTime)
 					enemies[i].enemyRandDirect = Math.floor((Math.random() * 4) + 1);
 					enemies[i].enemyMTime = 2;
 				}
-				
 				enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
 				enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
 			}
@@ -297,9 +297,7 @@ function BuildEntities(deltaTime)
 	}
 	
 	EnemyAI();
-	
-	
-	
+
 	player.position.y -= ySpeed * deltaTime;
 	player.position.x -= xSpeed * deltaTime;	
 
@@ -360,6 +358,22 @@ function EnemyAI()
 			enemies[i].enemySpeedX = -enemies[i].speed;
 			enemies[i].enemySpeedY = 0;
 			break;
+		}
+		if(enemies[i].enemyRandDirect === 3 && enemies[i].name === "Slime")
+		{
+			enemies[i].image = "slime_up.png"
+		}
+		if(enemies[i].enemyRandDirect === 4 && enemies[i].name === "Slime")
+		{
+			enemies[i].image = "slime_down.png"
+		}
+		if(enemies[i].enemyRandDirect === 1 && enemies[i].name === "Slime")
+		{
+			enemies[i].image = "slime_left.png"
+		}
+		if(enemies[i].enemyRandDirect === 2 && enemies[i].name === "Slime")
+		{
+			enemies[i].image = "slime_right.png"
 		}
 	}
 }
