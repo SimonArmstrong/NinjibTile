@@ -337,7 +337,7 @@ function BuildEntities(deltaTime)
 					{
 						enemies[i].isDead = true;
 						enemies[i].collider = new Collider(name, new Vector2(0, 0), new Vector2(0 ,0));
-						player.money += 1;
+						player.money += Math.floor((enemies[i].level*2) - (enemies[i].level/2));
 					}
 				}
 			}

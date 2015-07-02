@@ -23,7 +23,15 @@ var Enemy = function(name, level, image, dir)
 	this.exp = 1 + level;
 	
 	this.money = Math.floor((level*2) - (level/2));
-	console.log (this.name, " will drop ", this.money, " Pug Coin(s)!");
+	if(this.money > 1)
+	{
+		console.log (this.name, " will drop ", this.money, " Pug Coins!");
+	}
+	else
+	{
+		console.log (this.name, " will drop ", this.money, " Pug Coin!");
+	}
+
 	
 	this.ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x + (this.scale.x / 2), this.position.y));
 	this.ENEMY_RIGHT  = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x + this.scale.x, this.position.y + (this.scale.y / 2)));
