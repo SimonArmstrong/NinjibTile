@@ -189,7 +189,6 @@ function BuildEntities(deltaTime)
 					enemies[i].isDead = true;
 					enemies[i].collider = new Collider(name, new Vector2(0, 0), new Vector2(0 ,0));
 				}
-				console.log ("hit");
 			}
 			sword.draw();
 		}
