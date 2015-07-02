@@ -10,6 +10,7 @@ var Enemy = function(name, level, image, dir)
 	this.enemyCount = 3 + level;
 	
 	this.position = new Vector2(Math.floor((Math.random() * 702) + 34), Math.floor((Math.random() * 382) + 34));
+	
 	this.scale = new Vector2(32, 32);
 	this.direction = 0;
 	
@@ -30,8 +31,9 @@ var Enemy = function(name, level, image, dir)
 	this.ENEMY_LEFT   = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x, this.position.y + (this.scale.y / 2)));
 	this.ENEMY_BOTTOM = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x + (this.scale.x / 2), this.position.y + this.scale.y));
 	
-	this.enemyMTime = 2;
 	
+	this.BehaviourType = name;
+	this.enemyMTime = 2;
 	this.enemySpeedX = 0;
 	this.enemySpeedY = 0;
 };
