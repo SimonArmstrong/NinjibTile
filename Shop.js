@@ -14,7 +14,7 @@ function BuildShop()
 		context.drawImage(backgroundImage, 0, 0);
 		context.fillStyle = "#D1D119";
 		context.font = "24px Lucida Sans Unicode";
-		context.fillText("            : $" + money, 10, 300);
+		context.fillText("            : $" + player.money, 10, 300);
 		var coinImage = document.createElement("img");
 		coinImage.src = "coin-pug.png";
 		context.drawImage(coinImage, 70, 275);

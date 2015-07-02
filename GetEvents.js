@@ -4,7 +4,7 @@ var STATE_SHOP = 2;
 var STATE_MENU = 3;	
 var STATE_GAMEOVER = 4;
 
-var gameState = STATE_SHOP;
+var gameState = STATE_LOADING;
 var loadSeconds = 2;
 
 var MOVE_UP = false;
@@ -25,6 +25,9 @@ var KEY_D = 68;
 var KEY_SHIFT = 16;
 var KEY_ESC = 27;
 var KEY_ENTER = 13;
+
+var shopToggle = 0;
+
 
 function UpdateEvents()
 {
@@ -79,7 +82,7 @@ function KeyDown(e)
 			break;			
 			// Press Enter
 			case KEY_ENTER:
-				gameState = STATE_SHOP;	
+				shopToggle = 1;
 			break;		
 		}
 	}
@@ -89,7 +92,7 @@ function KeyDown(e)
 		switch(e.keyCode)
 		{
 			case KEY_ENTER:
-				gameState = STATE_GAME;
+				shopToggle = 0;
 			break;
 		}
 	}
@@ -113,6 +116,14 @@ function KeyDown(e)
 			break;
 		}		
 	}		
+	if(shopToggle === 1)
+	{
+		gameState = STATE_SHOP;
+	}
+	else
+	{
+		gameState = STATE_GAME;
+	}
 }
 
 window.addEventListener('keydown', KeyDown);

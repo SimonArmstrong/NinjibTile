@@ -24,8 +24,11 @@ function run()
 		//mistEmitter3.draw();
 	if (gameState === STATE_LOADING)
 	{
+		var backgroundImage = document.createElement("img");
+		backgroundImage.src = "Controls.png";
+		context.drawImage(backgroundImage, 0, 0);
 		loadSeconds -= deltaTime;
-		
+
 		if (loadSeconds <= 0)
 		{
 			gameState = STATE_GAME;
@@ -66,12 +69,16 @@ function run()
 	
 	 if (gameState === STATE_GAMEOVER)
 	{
-		context.fillStyle = "#000";
-		context.font="24px Arial";
+		var backgroundImage = document.createElement("img");
+		backgroundImage.src = "Black.png";
+		context.drawImage(backgroundImage, 0, 0);
+	
+		context.fillStyle = "#06f828";
+		context.font="36px Arial";
 		context.fillText("GAME OVER", 200, 240);
 		
-		context.fillStyle = "#000";
-		context.font="12px Arial";
+		context.fillStyle = "#06f828";
+		context.font="18px Arial";
 		context.fillText("Press 'SPACE' to continue...", 200, 280);
 	}		
 }
