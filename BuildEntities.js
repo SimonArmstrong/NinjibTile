@@ -187,7 +187,7 @@ function BuildEntities(deltaTime)
 				if(enemies[i].health <= 0)
 				{
 					enemies[i].isDead = true;
-					enemis.collider = false;
+					enemies[i].collider = new Collider(name, new Vector2(0, 0), new Vector2(0 ,0));
 				}
 				console.log ("hit");
 			}
