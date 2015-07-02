@@ -38,6 +38,7 @@ function BuildEntities(deltaTime)
 		{
 			sword.position = new Vector2(player.position.x + 25, player.position.y - 15);
 			sword.image = ("sword2.png");
+			sword.scale = new Vector2(64,32);
 			if(sword.isAttacking == true && player.direction == 4)
 			{
 				player.image = ("test_player4.png");
@@ -47,6 +48,7 @@ function BuildEntities(deltaTime)
 		{
 			sword.position = new Vector2(player.position.x - 10, player.position.y + 20);
 			sword.image = ("sword3.png");
+			sword.scale = new Vector2(32,64);
 			if(sword.isAttacking == true && player.direction == 2)
 			{
 				player.image = ("test_player3.png");
@@ -56,6 +58,7 @@ function BuildEntities(deltaTime)
 		{
 			sword.position = new Vector2(player.position.x - 50, player.position.y - 15);
 			sword.image = ("sword4.png");
+			sword.scale = new Vector2(64,32);
 			if(sword.isAttacking == true && player.direction == 3)
 			{
 				player.image = ("test_player5.png");
@@ -65,6 +68,7 @@ function BuildEntities(deltaTime)
 		{
 			sword.position = new Vector2(player.position.x - 5, player.position.y - 50);
 			sword.image = ("sword.png");
+			sword.scale = new Vector2(32,64);
 			if(sword.isAttacking == true && player.direction == 1)
 			{
 				player.image = ("test_player6.png");
@@ -244,7 +248,6 @@ function BuildEntities(deltaTime)
 					enemies[i].isDead = true;
 					enemies[i].collider = new Collider(name, new Vector2(0, 0), new Vector2(0 ,0));
 				}
-				console.log ("hit");
 			}
 			sword.draw();
 		}
