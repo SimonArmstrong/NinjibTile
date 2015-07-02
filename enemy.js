@@ -17,13 +17,9 @@ var Enemy = function(name, level, image, dir)
 	this.collider = new Collider(name, this.scale, this.position);
 	
 	this.speed = player.speed * (1/3);
-	
 	this.enemyRandDirect = dir;
-	
 	this.damage = 1;
-	
 	this.isDead = false;
-	
 	this.exp = 1 + level;
 	
 	this.ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(this.position.x + (this.scale.x / 2), this.position.y));

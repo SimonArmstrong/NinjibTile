@@ -55,7 +55,6 @@ function run()
 		mistEmitter2.draw();
 		mistEmitter3.draw();
 		
-
 		if(player.health <= 0)
 		{
 			gameState = STATE_GAMEOVER;
