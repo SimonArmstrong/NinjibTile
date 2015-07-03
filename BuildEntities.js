@@ -419,8 +419,6 @@ function BuildEntities(deltaTime)
 				{
 					console.log(enemies[i].health);
 					enemies[i].health -= player.equippedItem * deltaTime * 8;
-					enemies[i].position.x += enemies[i].enemySpeedY;
-					enemies[i].position.y += enemies[i].enemySpeedX;
 					if(enemies[i].health <= 0)
 					{
 						enemies[i].isDead = true;
@@ -436,12 +434,12 @@ function BuildEntities(deltaTime)
 	if(enemies.length <= 0)
 	{
 		levelClear = true;
+		wave++;
 		for(var i = 0; i <= enemies.length - 1; i++)
 		{
-			enemies[i].level += 1;
+			enemies[i].level += wave;
 		}
 		Spawn();
-		wave++;
 	}
 	
 	player.draw(deltaTime, player.sprite);
