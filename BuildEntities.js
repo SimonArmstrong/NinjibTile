@@ -146,33 +146,69 @@ function BuildEntities(deltaTime)
 				enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
 				enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
 			}
-			if(player.collider.isTouching(enemies[i].collider))
+			if(player.defense > 0)
 			{
-				if(player.invulnerabilityTimer <= 0)
+				if(player.collider.isTouching(enemies[i].collider))
 				{
-					if(FACE_UP.isTouching(enemies[i].collider))
+					if(player.invulnerabilityTimer <= 0)
 					{
-						player.health -= 1;
-						player.position.y += 32;
-						player.invulnerabilityTimer = 5;
+						if(FACE_UP.isTouching(enemies[i].collider))
+						{
+							player.defense -= 1;
+							player.position.y += 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_BOTTOM.isTouching(enemies[i].collider))
+						{
+							player.defense -= 1;
+							player.position.y -= 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_LEFT.isTouching(enemies[i].collider))
+						{
+							player.defense -= 1;
+							player.position.x += 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_RIGHT.isTouching(enemies[i].collider))
+						{
+							player.defense -= 1;
+							player.position.x -= 32;
+							player.invulnerabilityTimer = 5;
+						}
 					}
-					if(FACE_BOTTOM.isTouching(enemies[i].collider))
+				}
+			}
+			else
+			{
+				if(player.collider.isTouching(enemies[i].collider))
+				{
+					if(player.invulnerabilityTimer <= 0)
 					{
-						player.health -= 1;
-						player.position.y -= 32;
-						player.invulnerabilityTimer = 5;
-					}
-					if(FACE_LEFT.isTouching(enemies[i].collider))
-					{
-						player.health -= 1;
-						player.position.x += 32;
-						player.invulnerabilityTimer = 5;
-					}
-					if(FACE_RIGHT.isTouching(enemies[i].collider))
-					{
-						player.health -= 1;
-						player.position.x -= 32;
-						player.invulnerabilityTimer = 5;
+						if(FACE_UP.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.y += 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_BOTTOM.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.y -= 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_LEFT.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.x += 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_RIGHT.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.x -= 32;
+							player.invulnerabilityTimer = 5;
+						}
 					}
 				}
 			}
@@ -227,43 +263,86 @@ function BuildEntities(deltaTime)
 				enemies[i].position.y -= enemies[i].enemySpeedX * deltaTime;
 				enemies[i].position.x -= enemies[i].enemySpeedY * deltaTime;
 			}
-			if(player.collider.isTouching(enemies[i].collider))
+			if(player.defense > 0)
+			{	
+				if(player.collider.isTouching(enemies[i].collider))
+				{
+					if(player.collider.isTouching(enemies[i].collider))
+					{
+						if(player.invulnerabilityTimer <= 0)
+						{
+							if(FACE_UP.isTouching(enemies[i].collider))
+							{
+								player.defense -= 1;
+								player.position.y += 32;
+								player.invulnerabilityTimer = 5;
+							}
+							if(FACE_BOTTOM.isTouching(enemies[i].collider))
+							{
+								player.defense -= 1;
+								player.position.y -= 32;
+								player.invulnerabilityTimer = 5;
+							}
+							if(FACE_LEFT.isTouching(enemies[i].collider))
+							{
+								player.defense -= 1;
+								player.position.x += 32;
+								player.invulnerabilityTimer = 5;
+							}
+							if(FACE_RIGHT.isTouching(enemies[i].collider))
+							{
+								player.defense -= 1;
+								player.position.x -= 32;
+								player.invulnerabilityTimer = 5;
+							}
+						}
+					}
+					if(player.invulnerabilityTimer > 0)
+					{
+						player.invulnerabilityTimer -= deltaTime;
+					}
+				}
+			}
+			else
 			{
 				if(player.collider.isTouching(enemies[i].collider))
 				{
-					if(player.invulnerabilityTimer <= 0)
+					if(player.collider.isTouching(enemies[i].collider))
 					{
-						if(FACE_UP.isTouching(enemies[i].collider))
+						if(player.invulnerabilityTimer <= 0)
 						{
-							player.health -= 1;
-							player.position.y += 32;
-							player.invulnerabilityTimer = 5;
-						}
-						if(FACE_BOTTOM.isTouching(enemies[i].collider))
-						{
-							player.health -= 1;
-							player.position.y -= 32;
-							player.invulnerabilityTimer = 5;
-						}
-						if(FACE_LEFT.isTouching(enemies[i].collider))
-						{
-							player.health -= 1;
-							player.position.x += 32;
-							player.invulnerabilityTimer = 5;
-						}
-						if(FACE_RIGHT.isTouching(enemies[i].collider))
-						{
-							player.health -= 1;
-							player.position.x -= 32;
-							player.invulnerabilityTimer = 5;
+							if(FACE_UP.isTouching(enemies[i].collider))
+							{
+								player.health -= 1;
+								player.position.y += 32;
+								player.invulnerabilityTimer = 5;
+							}
+							if(FACE_BOTTOM.isTouching(enemies[i].collider))
+							{
+								player.health -= 1;
+								player.position.y -= 32;
+								player.invulnerabilityTimer = 5;
+							}
+							if(FACE_LEFT.isTouching(enemies[i].collider))
+							{
+								player.health -= 1;
+								player.position.x += 32;
+								player.invulnerabilityTimer = 5;
+							}
+							if(FACE_RIGHT.isTouching(enemies[i].collider))
+							{
+								player.health -= 1;
+								player.position.x -= 32;
+								player.invulnerabilityTimer = 5;
+							}
 						}
 					}
+					if(player.invulnerabilityTimer > 0)
+					{
+						player.invulnerabilityTimer -= deltaTime;
+					}
 				}
-				if(player.invulnerabilityTimer > 0)
-				{
-					player.invulnerabilityTimer -= deltaTime;
-				}
-			}
+			}			
 		}
 		//player.trigger.draw("#f00");
 	}
