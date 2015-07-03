@@ -2,14 +2,16 @@ var Enemy = function(name, level, image, dir)
 {
 	this.name = name;
 	this.level = level;
+	this.position = new Vector2(Math.floor((Math.random() * 702) + 34), Math.floor((Math.random() * 382) + 34));
 	
 	this.sprite = document.createElement("img");
 	this.image = image;
 	
 	this.health = 2 + level;
+	this.maxHealth = 2 + level;
 	this.enemyCount = 3 + level;
 	
-	this.position = new Vector2(Math.floor((Math.random() * 702) + 34), Math.floor((Math.random() * 382) + 34));
+	this.healthMeter = new HealthMeter(this);
 	
 	this.scale = new Vector2(32, 32);
 	this.direction = 0;
@@ -47,6 +49,7 @@ var Enemy = function(name, level, image, dir)
 
 Enemy.prototype.draw = function()
 {
+	this.healthMeter = new HealthMeter(this);
 	this.sprite.src = this.image;
 	context.drawImage(this.sprite, this.position.x, this.position.y)
 };
