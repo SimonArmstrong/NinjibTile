@@ -10,7 +10,7 @@ var Player = function(image)
 	this.collider = new Collider("player_hitbox", this.scale, this.position);
 	
 	this.health = 3;
-	this.defense = 1;
+	this.defense = 0;
 	this.exp = 0;
 	this.level = 1;
 	
@@ -21,13 +21,15 @@ var Player = function(image)
 	this.blinkTime = 0;
 	this.blinkSpeed = 0.5;
 	
+	this.item;
+	
 	this.equippedItem;
+	this.equippedArmour;
 	this.equippedHat;
 	this.equippedShoes;
 	this.equippedPants;
-	this.equippedShirt;
 	
-	this.money = 0;
+	this.money = 100;
 	
 	/*
 	this.FACE_UP = new Collider("player", new Vector2(this.scale.x, 1), this.position);
@@ -71,11 +73,10 @@ var FACE_LEFT = new Collider("player", new Vector2(1, 1), new Vector2(player.pos
 var FACE_BOTTOM = new Collider("player", new Vector2(1, 1), new Vector2(player.position.x + (player.scale.x / 2), player.position.y + player.scale.y));
 
 player.equippedItem = items[16].damage;
-player.equippedShirt = items[0].defense;
-player.equippedHat = items[8].defense;
-player.equippedPants = items[4].defense;
-player.equippedShoes = items[12].defense;
-
+player.equippedArmour = items[21].defense;
+player.equippedHat = items[21].defense
+player.equippedShoes = items[21].defense;
+player.equippedPants = items[21].defense
 
 if(player.exp = 5)
 {

@@ -25,6 +25,12 @@ function BuildShop()
 		context.drawImage(coinImage, OFFSET_X + 70, OFFSET_Y + 275);
 		var shopSignImage = document.createElement("img");
 		shopSignImage.src = "Shop Sign.png";
+		var shopInfoImage = document.createElement("img");
+		shopInfoImage.src = "itemListBox.png";
+		context.drawImage(shopInfoImage, (canvas.width/2 - 208), (canvas.height/2 + 35));
+		var shopPugImage = document.createElement("img");
+		shopPugImage.src = "shopPug.png";
+		context.drawImage(shopPugImage, (canvas.width/1.8), (canvas.height/2 + 35));
 		
 		for(var i = 0; i <= items.length - 1; i++)
 		{
@@ -58,16 +64,42 @@ function BuildShop()
 				clicked = false;
 				console.log("Just Purchased " + buttons[i].item.name + " for $" + buttons[i].item.cost);
 				
-				if(buttons[i].item.type === "weapon")
+				if(buttons[i].item.type === "Weapon")
 				{
 					player.equippedItem = buttons[i].item.damage;
+					console.log(buttons[i].item.damage);
+				}
+				if(buttons[i].item.type === "Armour")
+				{
+					player.equippedArmour = buttons[i].item.defense;
+					player.defense += player.equippedArmour - player.defense;
+				}	
+				if(buttons[i].item.type === "Hat")
+				{
+					player.equippedHat = buttons[i].item.defense - player.defense;
+					player.defense += player.equippedHat;
+				}	
+				if(buttons[i].item.type === "Shoes")
+				{
+					player.equippedShoes = buttons[i].item.defense - player.defense;
+					player.defense += player.equippedShoes;
+				}	
+				if(buttons[i].item.type === "Pants")
+				{
+					player.equippedPants = buttons[i].item.defense - player.defense;
+					player.defense += player.equippedPants;
 				}
 			}
 			
 			if(buttons[i].MouseOver() === true)
 			{
-				//context.fillStyle = "#fff";
-				//context.fillText("Cost: $" + buttons[i].item.cost + " \ " + buttons[i].item.name, mousePosition.x, mousePosition.y);
+				
+				context.fillStyle = "#D1D119";
+				context.font = "24px Lucida Sans Unicode";
+				context.fillText("Cost: $" + buttons[i].item.cost, (canvas.width/2 - 180), (canvas.height/2 + 69));
+				context.fillStyle = "#D1D119";
+				context.font = "24px Lucida Sans Unicode";
+				context.fillText(buttons[i].item.name, (canvas.width/2 - 180), (canvas.height/2 + 100));
 			}
 			
 			if(i >= buttons.length)

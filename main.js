@@ -51,10 +51,12 @@ function run()
 		BuildWalls(deltaTime);
 		GoldDisplay();
 		LifeDisplay();
-		mistEmitter1.draw();
-		mistEmitter2.draw();
-		mistEmitter3.draw();
-		
+		if(levelClear)
+		{
+			mistEmitter1.draw();
+			mistEmitter2.draw();
+			mistEmitter3.draw();
+		}
 		if(player.health <= 0)
 		{
 			gameState = STATE_GAMEOVER;
@@ -86,7 +88,7 @@ function run()
 		
 		context.fillStyle = "#06f828";
 		context.font="18px Arial";
-		context.fillText("Press 'SPACE' to continue...", 200, 280);
+		context.fillText("Press '  F5  ' to continue...", 200, 280);
 	}		
 }
 
