@@ -13,16 +13,17 @@ var wave = 0;
 
 function Spawn() 
 {
-	var Rat = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-	var Rat2 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-	var Rat3 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-	var Rat4 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-	var Slime = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
+	enemies = [];
+	
+	var Rat    = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+	var Rat2   = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+	var Rat3   = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+	var Rat4   = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+	var Slime  = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
 	var Slime2 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
 	var Slime3 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
 	var Slime4 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
-	//Hi Alex
-
+	
 	enemies.push(Rat);
 	enemies.push(Rat2);
 	enemies.push(Rat3);
@@ -32,15 +33,35 @@ function Spawn()
 	enemies.push(Slime3);
 	enemies.push(Slime4);
 }
+
+
 var attackTime = 0;
 var doorOpen = true;
 //player vars
 xSpeed = 0;
 ySpeed = 0;
 
+Spawn();
 
 function BuildEntities(deltaTime)
 {
+
+	if(enemies.length <= 0)
+	{
+		levelClear = true;
+		wave++;
+		player.position = new Vector2(canvas.width / 2, 32);
+		player.collider.position = new Vector2(canvas.width / 2, 32);
+		Spawn();
+		for(var i = 0; i <= enemies.length - 1; i++)
+		{	
+			enemies[i].level += wave;
+			enemies[i].maxHealth = enemies[i].level;
+			enemies[i].health = enemies[i].level;
+			enemies[i].collider.draw("#fff");
+		}
+	}
+	
 	if(player.direction == 4)
 		{
 			sword.position = new Vector2(player.position.x + 25, player.position.y + 8);
@@ -105,7 +126,6 @@ function BuildEntities(deltaTime)
 	
 	for(var i = 0; i <= enemies.length - 1; i++)
 	{
-		DiffLog(i);
 		if(enemies[i].BehaviourType === "Rat")
 		{
 			enemies[i].ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y));
@@ -153,7 +173,7 @@ function BuildEntities(deltaTime)
 			}
 			if(player.defense > 0)
 			{
-				if(player.collider.isTouching(enemies[i].collider))
+				//if(player.collider.isTouching(enemies[i].collider))
 				{
 					if(player.invulnerabilityTimer <= 0)
 					{
@@ -186,7 +206,7 @@ function BuildEntities(deltaTime)
 			}
 			else
 			{
-				if(player.collider.isTouching(enemies[i].collider))
+				//if(player.collider.isTouching(enemies[i].collider))
 				{
 					if(player.invulnerabilityTimer <= 0)
 					{
@@ -270,9 +290,9 @@ function BuildEntities(deltaTime)
 			}
 			if(player.defense > 0)
 			{	
-				if(player.collider.isTouching(enemies[i].collider))
+				//if(player.collider.isTouching(enemies[i].collider))
 				{
-					if(player.collider.isTouching(enemies[i].collider))
+					//if(player.collider.isTouching(enemies[i].collider))
 					{
 						if(player.invulnerabilityTimer <= 0)
 						{
@@ -310,36 +330,33 @@ function BuildEntities(deltaTime)
 			}
 			else
 			{
-				if(player.collider.isTouching(enemies[i].collider))
+				//if(player.collider.isTouching(enemies[i].collider))
 				{
-					if(player.collider.isTouching(enemies[i].collider))
+					if(player.invulnerabilityTimer <= 0)
 					{
-						if(player.invulnerabilityTimer <= 0)
+						if(FACE_UP.isTouching(enemies[i].collider))
 						{
-							if(FACE_UP.isTouching(enemies[i].collider))
-							{
-								player.health -= 1;
-								player.position.y += 32;
-								player.invulnerabilityTimer = 5;
-							}
-							if(FACE_BOTTOM.isTouching(enemies[i].collider))
-							{
-								player.health -= 1;
-								player.position.y -= 32;
-								player.invulnerabilityTimer = 5;
-							}
-							if(FACE_LEFT.isTouching(enemies[i].collider))
-							{
-								player.health -= 1;
-								player.position.x += 32;
-								player.invulnerabilityTimer = 5;
-							}
-							if(FACE_RIGHT.isTouching(enemies[i].collider))
-							{
-								player.health -= 1;
-								player.position.x -= 32;
-								player.invulnerabilityTimer = 5;
-							}
+							player.health -= 1;
+							player.position.y += 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_BOTTOM.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.y -= 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_LEFT.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.x += 32;
+							player.invulnerabilityTimer = 5;
+						}
+						if(FACE_RIGHT.isTouching(enemies[i].collider))
+						{
+							player.health -= 1;
+							player.position.x -= 32;
+							player.invulnerabilityTimer = 5;
 						}
 					}
 					if(player.invulnerabilityTimer > 0)
@@ -433,21 +450,6 @@ function BuildEntities(deltaTime)
 			}
 		}
 	}
-	
-	if(enemies.length <= 0)
-	{
-		levelClear = true;
-		wave++;
-		player.position = new Vector2(canvas.width / 2, 32);
-		Spawn();
-		for(var i = 0; i <= enemies.length - 1; i++)
-		{
-			enemies[i].level += wave;
-			enemies[i].maxHealth = enemies[i].level;
-			enemies[i].health = enemies[i].level;
-		}
-	}
-	
 	player.draw(deltaTime, player.sprite);
 }
 function EnemyAI()
