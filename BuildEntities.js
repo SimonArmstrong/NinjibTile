@@ -9,7 +9,7 @@ right.src = "test_player4.png";
 up.src = "test_player6.png";
 down.src = "test_player3.png";
 
-var wave = 1;
+var wave = 0;
 
 function Spawn() 
 {
