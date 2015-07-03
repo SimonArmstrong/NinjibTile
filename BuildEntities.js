@@ -34,7 +34,7 @@ enemies.push(Slime3);
 enemies.push(Slime4);
 
 var attackTime = 0;
-var levelClear = false;
+var doorOpen = true;
 
 function BuildEntities(deltaTime)
 {

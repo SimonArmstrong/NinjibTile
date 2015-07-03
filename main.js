@@ -51,7 +51,7 @@ function run()
 		BuildWalls(deltaTime);
 		GoldDisplay();
 		LifeDisplay();
-		if(levelClear)
+		if(doorOpen)
 		{
 			mistEmitter1.draw();
 			mistEmitter2.draw();
