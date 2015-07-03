@@ -51,10 +51,12 @@ function run()
 		BuildWalls(deltaTime);
 		GoldDisplay();
 		LifeDisplay();
-		mistEmitter1.draw();
-		mistEmitter2.draw();
-		mistEmitter3.draw();
-		
+		if(levelClear)
+		{
+			mistEmitter1.draw();
+			mistEmitter2.draw();
+			mistEmitter3.draw();
+		}
 		if(player.health <= 0)
 		{
 			gameState = STATE_GAMEOVER;

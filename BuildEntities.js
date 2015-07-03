@@ -34,6 +34,7 @@ enemies.push(Slime3);
 enemies.push(Slime4);
 
 var attackTime = 0;
+var levelClear = false;
 
 function BuildEntities(deltaTime)
 {
@@ -419,19 +420,18 @@ function BuildEntities(deltaTime)
 						enemies[i].isDead = true;
 						enemies[i].collider = new Collider(name, new Vector2(0, 0), new Vector2(0 ,0));
 						player.money += Math.floor((enemies[i].level*2) - (enemies[i].level/2));
+						enemies.splice(i, 1);
 					}
 				}
 			}
 		}
-		
-		//Enemy collider draw
-		/*
-		enemies[i].ENEMY_UP.draw("#f00");
-		enemies[i].ENEMY_RIGHT.draw("#f00");
-		enemies[i].ENEMY_LEFT.draw("#f00");
-		enemies[i].ENEMY_BOTTOM.draw("#f00");
-		*/
 	}
+	
+	if(enemies.length <= 0)
+	{
+		levelClear = true;
+	}
+	
 	player.draw(deltaTime);
 }
 function EnemyAI()

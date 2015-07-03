@@ -37,23 +37,88 @@ function BuildCollision(deltaTime)
 	
 	for(var i = 0; i <= walls.length - 1; i++)
 	{
-		if(FACE_UP.isTouching(walls[i].collider) === true)
+		if(walls[i].type != "door" && walls_c[i].type != "door")
 		{
-			player.position.y += (ySpeed + 100) * deltaTime;
-		}
-		if(FACE_RIGHT.isTouching(walls[i].collider) === true)
-		{
-			player.position.x -= (-xSpeed + 100) * deltaTime;
-		}
+			if(FACE_UP.isTouching(walls[i].collider) === true)
+			{
+				player.position.y += (ySpeed + 100) * deltaTime;
+			}
+			if(FACE_RIGHT.isTouching(walls[i].collider) === true)
+			{
+				player.position.x -= (-xSpeed + 100) * deltaTime;
+			}
 
-		if(FACE_BOTTOM.isTouching(walls[i].collider) === true)
-		{
-			player.position.y -= (-ySpeed + 100) * deltaTime;
-		}
+			if(FACE_BOTTOM.isTouching(walls[i].collider) === true)
+			{
+				player.position.y -= (-ySpeed + 100) * deltaTime;
+			}
 
-		if(FACE_LEFT.isTouching(walls[i].collider) === true)
+			if(FACE_LEFT.isTouching(walls[i].collider) === true)
+			{
+				player.position.x += (xSpeed + 100) * deltaTime;
+			}
+			//Wall Duplicates
+			if(FACE_UP.isTouching(walls_c[i].collider) === true)
+			{
+				player.position.y += (ySpeed + 100) * deltaTime;
+			}
+			if(FACE_RIGHT.isTouching(walls_c[i].collider) === true)
+			{
+				player.position.x -= (-xSpeed + 100) * deltaTime;
+			}
+
+			if(FACE_BOTTOM.isTouching(walls_c[i].collider) === true)
+			{
+				player.position.y -= (-ySpeed + 100) * deltaTime;
+			}
+
+			if(FACE_LEFT.isTouching(walls_c[i].collider) === true)
+			{
+				player.position.x += (xSpeed + 100) * deltaTime;
+			}
+		}
+		else
 		{
-			player.position.x += (xSpeed + 100) * deltaTime;
+			if(!levelClear)
+			{
+				if(FACE_UP.isTouching(walls[i].collider) === true)
+				{
+					player.position.y += (ySpeed + 100) * deltaTime;
+				}
+				if(FACE_RIGHT.isTouching(walls[i].collider) === true)
+				{
+					player.position.x -= (-xSpeed + 100) * deltaTime;
+				}
+
+				if(FACE_BOTTOM.isTouching(walls[i].collider) === true)
+				{
+					player.position.y -= (-ySpeed + 100) * deltaTime;
+				}
+
+				if(FACE_LEFT.isTouching(walls[i].collider) === true)
+				{
+					player.position.x += (xSpeed + 100) * deltaTime;
+				}
+				//Wall Duplicates
+				if(FACE_UP.isTouching(walls_c[i].collider) === true)
+				{
+					player.position.y += (ySpeed + 100) * deltaTime;
+				}
+				if(FACE_RIGHT.isTouching(walls_c[i].collider) === true)
+				{
+					player.position.x -= (-xSpeed + 100) * deltaTime;
+				}
+
+				if(FACE_BOTTOM.isTouching(walls_c[i].collider) === true)
+				{
+					player.position.y -= (-ySpeed + 100) * deltaTime;
+				}
+
+				if(FACE_LEFT.isTouching(walls_c[i].collider) === true)
+				{
+					player.position.x += (xSpeed + 100) * deltaTime;
+				}
+			}
 		}
 	}
 }
