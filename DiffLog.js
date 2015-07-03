@@ -24,32 +24,28 @@ var DiffLog = function(i)
 	var posXDiff = ppx - epx
 	var posYDiff = ppy - epy
 	
-	var logToCon = false;
-	
-	if(logToCon = true)
-	{
-		if(posXDiff > 0)
-		{
-			if(posYDiff > 0)
-			{
-				console.log("The enemy is above and left of the player");
-			}
-			if(posYDiff < 0)
-			{
-				console.log("The enemy is below and left of the player");
-			}
 
-		}
-		if(posXDiff < 0)
+	if(posXDiff > 0)
+	{
+		if(posYDiff > 0)
 		{
-			if(posYDiff > 0)
-			{
-				console.log("The player is below and left of the enemy");
-			}
-			if(posYDiff < 0)
-			{
-				console.log("The player is above and left of the enemy");
-			}
+			console.log("The enemy is above and left of the player");
+		}
+		if(posYDiff < 0)
+		{
+			console.log("The enemy is below and left of the player");
+		}
+
+	}
+	if(posXDiff < 0)
+	{
+		if(posYDiff > 0)
+		{
+			console.log("The player is below and left of the enemy");
+		}
+		if(posYDiff < 0)
+		{
+			console.log("The player is above and left of the enemy");
 		}
 	}
 };

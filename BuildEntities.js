@@ -102,6 +102,7 @@ function BuildEntities(deltaTime)
 	
 	for(var i = 0; i <= enemies.length - 1; i++)
 	{
+		DiffLog(i);
 		if(enemies[i].BehaviourType === "Rat")
 		{
 			enemies[i].ENEMY_UP     = new Collider("enemy", new Vector2(1, 1), new Vector2(enemies[i].position.x + (enemies[i].scale.x / 2), enemies[i].position.y));
