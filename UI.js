@@ -81,5 +81,10 @@ function LifeDisplay()
 
 } 
 
-
-
+function WaveDisplay()
+{
+	context.fillStyle = "white";
+	context.font = "24px Lucida Sans Unicode";
+	var waveText = "WAVE:" + wave;
+	context.fillText (waveText, canvas.width - 250, 25 );
+}

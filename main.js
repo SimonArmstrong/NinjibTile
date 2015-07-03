@@ -51,6 +51,7 @@ function run()
 		BuildWalls(deltaTime);
 		GoldDisplay();
 		LifeDisplay();
+		WaveDisplay();
 		if(doorOpen)
 		{
 			mistEmitter1.draw();
