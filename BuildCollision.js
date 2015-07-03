@@ -4,6 +4,7 @@ var canMoveUp = true;
 var canMoveDown = true;
 
 var DOOR = new Collider("door", new Vector2(128, 32), new Vector2(canvas.width / 2 - 64, -32));
+var DOOR_DOWN = new Collider("door", new Vector2(128, 32), new Vector2(canvas.width / 2 - 64, canvas.height));
 
 function BuildCollision(deltaTime)
 {
@@ -17,27 +18,52 @@ function BuildCollision(deltaTime)
 		player.position.y += (ySpeed + 100) * deltaTime;
 		ScrollMap = true;
 	}
-	if(FACE_RIGHT.isTouching(DOOR) === true)
+	else if(FACE_RIGHT.isTouching(DOOR) === true)
 	{
 		player.position.x -= (-xSpeed + 100) * deltaTime;
 		ScrollMap = true;
 	}
-
-	if(FACE_BOTTOM.isTouching(DOOR) === true)
+	else if(FACE_BOTTOM.isTouching(DOOR) === true)
 	{
 		player.position.y -= (-ySpeed + 100) * deltaTime;
 		ScrollMap = true;
 	}
-
-	if(FACE_LEFT.isTouching(DOOR) === true)
+	else if(FACE_LEFT.isTouching(DOOR_DOWN) === true)
 	{
 		player.position.x += (xSpeed + 100) * deltaTime;
 		ScrollMap = true;
 	}
+	else
+	{
+		//ScrollMap = false;
+	}
+	
+	if(FACE_UP.isTouching(DOOR_DOWN) === true)
+	{
+		player.position.y += (ySpeed + 100) * deltaTime;
+		ScrollMapDown = true;
+	}
+	if(FACE_RIGHT.isTouching(DOOR_DOWN) === true)
+	{
+		player.position.x -= (-xSpeed + 100) * deltaTime;
+		ScrollMapDown = true;
+	}
+
+	if(FACE_BOTTOM.isTouching(DOOR_DOWN) === true)
+	{
+		player.position.y -= (-ySpeed + 100) * deltaTime;
+		ScrollMapDown = true;
+	}
+
+	if(FACE_LEFT.isTouching(DOOR_DOWN) === true)
+	{
+		player.position.x += (xSpeed + 100) * deltaTime;
+		ScrollMapDown = true;
+	}
 	
 	for(var i = 0; i <= walls.length - 1; i++)
 	{
-		if(walls[i].type != "door" && walls_c[i].type != "door")
+		if(walls[i].type != "door" && walls[i].type != "door")
 		{
 			if(FACE_UP.isTouching(walls[i].collider) === true)
 			{
@@ -54,25 +80,6 @@ function BuildCollision(deltaTime)
 			}
 
 			if(FACE_LEFT.isTouching(walls[i].collider) === true)
-			{
-				player.position.x += (xSpeed + 100) * deltaTime;
-			}
-			//Wall Duplicates
-			if(FACE_UP.isTouching(walls_c[i].collider) === true)
-			{
-				player.position.y += (ySpeed + 100) * deltaTime;
-			}
-			if(FACE_RIGHT.isTouching(walls_c[i].collider) === true)
-			{
-				player.position.x -= (-xSpeed + 100) * deltaTime;
-			}
-
-			if(FACE_BOTTOM.isTouching(walls_c[i].collider) === true)
-			{
-				player.position.y -= (-ySpeed + 100) * deltaTime;
-			}
-
-			if(FACE_LEFT.isTouching(walls_c[i].collider) === true)
 			{
 				player.position.x += (xSpeed + 100) * deltaTime;
 			}
@@ -99,6 +106,37 @@ function BuildCollision(deltaTime)
 				{
 					player.position.x += (xSpeed + 100) * deltaTime;
 				}
+			}
+		}
+	}
+	for(var i = 0; i <= walls_c.length - 1; i++)
+	{
+		if(walls_c[i].type != "door" && walls_c[i].type != "door")
+		{
+			//Wall Duplicates
+			if(FACE_UP.isTouching(walls_c[i].collider) === true)
+			{
+				player.position.y += (ySpeed + 100) * deltaTime;
+			}
+			if(FACE_RIGHT.isTouching(walls_c[i].collider) === true)
+			{
+				player.position.x -= (-xSpeed + 100) * deltaTime;
+			}
+
+			if(FACE_BOTTOM.isTouching(walls_c[i].collider) === true)
+			{
+				player.position.y -= (-ySpeed + 100) * deltaTime;
+			}
+
+			if(FACE_LEFT.isTouching(walls_c[i].collider) === true)
+			{
+				player.position.x += (xSpeed + 100) * deltaTime;
+			}
+		}
+		else
+		{
+			if(!levelClear)
+			{
 				//Wall Duplicates
 				if(FACE_UP.isTouching(walls_c[i].collider) === true)
 				{
