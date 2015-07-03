@@ -86,25 +86,27 @@ function BuildCollision(deltaTime)
 		}
 		else
 		{
-			if(!levelClear)
+			if(doorOpen)
 			{
 				if(FACE_UP.isTouching(walls[i].collider) === true)
 				{
 					player.position.y += (ySpeed + 100) * deltaTime;
 				}
-				if(FACE_RIGHT.isTouching(walls[i].collider) === true)
+				else if(FACE_RIGHT.isTouching(walls[i].collider) === true)
 				{
 					player.position.x -= (-xSpeed + 100) * deltaTime;
 				}
-
-				if(FACE_BOTTOM.isTouching(walls[i].collider) === true)
+				else if(FACE_BOTTOM.isTouching(walls[i].collider) === true)
 				{
 					player.position.y -= (-ySpeed + 100) * deltaTime;
 				}
-
-				if(FACE_LEFT.isTouching(walls[i].collider) === true)
+				else if(FACE_LEFT.isTouching(walls[i].collider) === true)
 				{
 					player.position.x += (xSpeed + 100) * deltaTime;
+				}
+				else
+				{
+					doorOpen = false;
 				}
 			}
 		}
@@ -135,7 +137,7 @@ function BuildCollision(deltaTime)
 		}
 		else
 		{
-			if(!levelClear)
+			if(!doorOpen)
 			{
 				//Wall Duplicates
 				if(FACE_UP.isTouching(walls_c[i].collider) === true)
