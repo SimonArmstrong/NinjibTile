@@ -69,6 +69,26 @@ function BuildShop()
 					player.equippedItem = buttons[i].item.damage;
 					console.log(buttons[i].item.damage);
 				}
+				if(buttons[i].item.type === "Armour")
+				{
+					player.equippedArmour = buttons[i].item.defense;
+					player.defense += player.equippedArmour - player.defense;
+				}	
+				if(buttons[i].item.type === "Hat")
+				{
+					player.equippedHat = buttons[i].item.defense - player.defense;
+					player.defense += player.equippedHat;
+				}	
+				if(buttons[i].item.type === "Shoes")
+				{
+					player.equippedShoes = buttons[i].item.defense - player.defense;
+					player.defense += player.equippedShoes;
+				}	
+				if(buttons[i].item.type === "Pants")
+				{
+					player.equippedPants = buttons[i].item.defense - player.defense;
+					player.defense += player.equippedPants;
+				}
 			}
 			
 			if(buttons[i].MouseOver() === true)
