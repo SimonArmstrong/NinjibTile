@@ -1,17 +1,4 @@
-
-var Rat = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-var Rat2 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-var Rat3 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-var Rat4 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
-var Slime = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
-var Slime2 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
-var Slime3 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
-var Slime4 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
-//Hi Alex
 var enemies = [];
-
-var wave = 0;
-
 var left  = document.createElement("img");
 var right = document.createElement("img");
 var up    = document.createElement("img");
@@ -22,49 +9,35 @@ right.src = "test_player4.png";
 up.src = "test_player6.png";
 down.src = "test_player3.png";
 
+var wave = 1;
+
+function Spawn() 
+{
+	var Rat = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+	var Rat2 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+	var Rat3 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+	var Rat4 = new Enemy("Rat", 1, "Rat_Image.png", Math.floor((Math.random() * 4) + 1));
+	var Slime = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
+	var Slime2 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
+	var Slime3 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
+	var Slime4 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() * 4) + 1));
+	//Hi Alex
+
+	enemies.push(Rat);
+	enemies.push(Rat2);
+	enemies.push(Rat3);
+	enemies.push(Rat4);
+	enemies.push(Slime);
+	enemies.push(Slime2);
+	enemies.push(Slime3);
+	enemies.push(Slime4);
+}
+var attackTime = 0;
+var doorOpen = true;
 //player vars
 xSpeed = 0;
 ySpeed = 0;
 
-enemies.push(Rat);
-enemies.push(Rat2);
-enemies.push(Rat3);
-enemies.push(Rat4);
-enemies.push(Slime);
-enemies.push(Slime2);
-enemies.push(Slime3);
-enemies.push(Slime4);
-
-var attackTime = 0;
-var doorOpen = true;
-
-function spawnEnemy()
-{
-	if(enemies.length === 0) 
-	{
-		enemy.level += 1;
-		
-		//var enemies = [];
-		
-		enemies.push(Rat);
-		enemies.push(Rat2);
-		enemies.push(Rat3);
-		enemies.push(Rat4);
-		enemies.push(Slime);
-		enemies.push(Slime2);
-		enemies.push(Slime3);
-		enemies.push(Slime4);
-		
-		for(var i = 0; i <= enemies.length - 1; i++)
-		{
-			if(enemies[i].health > 0)
-			{
-				enemies[i].draw();
-				enemies[i].healthMeter.draw();
-			}
-		}
-	}
-}
 
 function BuildEntities(deltaTime)
 {
@@ -446,6 +419,8 @@ function BuildEntities(deltaTime)
 				{
 					console.log(enemies[i].health);
 					enemies[i].health -= player.equippedItem * deltaTime * 8;
+					enemies[i].position.x += enemies[i].enemySpeedY;
+					enemies[i].position.y += enemies[i].enemySpeedX;
 					if(enemies[i].health <= 0)
 					{
 						enemies[i].isDead = true;
@@ -461,9 +436,15 @@ function BuildEntities(deltaTime)
 	if(enemies.length <= 0)
 	{
 		levelClear = true;
+		for(var i = 0; i <= enemies.length - 1; i++)
+		{
+			enemies[i].level += 1;
+		}
+		Spawn();
+		wave++;
 	}
 	
-	player.draw(deltaTime);
+	player.draw(deltaTime, player.sprite);
 }
 function EnemyAI()
 {

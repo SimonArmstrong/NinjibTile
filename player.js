@@ -36,7 +36,7 @@ var Player = function(image)
 	this.equippedShoes;
 	this.equippedPants;
 	
-	this.money = 100;
+	this.money = 0;
 	
 	/*
 	this.FACE_UP = new Collider("player", new Vector2(this.scale.x, 1), this.position);
@@ -48,7 +48,7 @@ var Player = function(image)
 	//this.collider = new Collider("player", this.scale, this.position);
 }
 
-Player.prototype.draw = function(deltaTime)
+Player.prototype.draw = function(deltaTime, image)
 {
 	if(this.invulnerabilityTimer > 0)
 	{
@@ -58,7 +58,7 @@ Player.prototype.draw = function(deltaTime)
 		}
 		if(this.blinkTime < 0.2)
 		{
-			context.drawImage(this.sprite, this.position.x, this.position.y);
+			context.drawImage(image, this.position.x, this.position.y);
 			if(this.blinkTime <= 0)
 			{
 				this.blinkTime = this.blinkSpeed;

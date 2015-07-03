@@ -2,14 +2,13 @@ var Enemy = function(name, level, image, dir)
 {
 	this.name = name;
 	this.level = level;
-	this.position = new Vector2(Math.floor((Math.random() * 702) + 34), Math.floor((Math.random() * 382) + 34));
+	this.position = new Vector2(Math.floor( 64 +(Math.random() * 1400) - 64), Math.floor( 128 + (Math.random() * 500) + 34));
 	
 	this.sprite = document.createElement("img");
 	this.image = image;
 	
-	this.health = 2 + level;
-	this.maxHealth = 2 + level;
-	this.enemyCount = 3 + level;
+	this.health = level;
+	this.maxHealth = level;
 	
 	this.healthMeter = new HealthMeter(this);
 	
