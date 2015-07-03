@@ -12,10 +12,10 @@ var Item = function (name, cost, damage, defense, type, icon)
 
 var items = [];
 
-items.push(new Item ("Cloth Rag", 15, 0, 1, "Armour", "placeHolderArmour.png"));
-items.push(new Item ("Leather Coat", 22, 0, 2, "Armour", "placeHolderArmour.png"));
-items.push(new Item ("Chainmail", 35, 0, 3, "Armour", "placeHolderArmour.png"));
-items.push(new Item ("Iron Armour", 50, 0, 4, "Armour", "placeHolderArmour.png"));
+items.push(new Item ("Cloth Rag", 15, 0, 1, "Armour", "cloth_rag.png"));
+items.push(new Item ("Leather Coat", 22, 0, 2, "Armour", "leather_coat.png"));
+items.push(new Item ("Chainmail", 35, 0, 3, "Armour", "chainmail.png"));
+items.push(new Item ("Iron Armour", 50, 0, 4, "Armour", "iron_armour.png"));
 
 items.push(new Item("Cloth Pants", 12, 0, 1, "Pants", "placeHolderArmour.png"));
 items.push(new Item("Leather Pants", 20, 0, 2, "Pants", "placeHolderArmour.png"));
