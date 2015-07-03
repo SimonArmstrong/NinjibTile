@@ -72,23 +72,25 @@ function BuildShop()
 				if(buttons[i].item.type === "Armour")
 				{
 					player.equippedArmour = buttons[i].item.defense;
-					player.defense += player.equippedArmour - player.defense;
+					player.defenseA += player.equippedArmour - player.defenseA;
 				}	
 				if(buttons[i].item.type === "Hat")
 				{
-					player.equippedHat = buttons[i].item.defense - player.defense;
-					player.defense += player.equippedHat;
+					player.equippedHat = buttons[i].item.defense;
+					player.defenseH += player.equippedHat - player.defenseH;
 				}	
 				if(buttons[i].item.type === "Shoes")
 				{
-					player.equippedShoes = buttons[i].item.defense - player.defense;
-					player.defense += player.equippedShoes;
+					player.equippedShoes = buttons[i].item.defense;
+					player.defenseS += player.equippedShoes - player.defenseS;
 				}	
 				if(buttons[i].item.type === "Pants")
 				{
-					player.equippedPants = buttons[i].item.defense - player.defense;
-					player.defense += player.equippedPants;
+					player.equippedPants = buttons[i].item.defense;
+					player.defenseP += player.equippedPants - player.defenseP;
 				}
+				
+				player.defense = player.defenseA + player.defenseH + player.defenseP + player.defenseS;
 			}
 			
 			if(buttons[i].MouseOver() === true)

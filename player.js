@@ -10,7 +10,14 @@ var Player = function(image)
 	this.collider = new Collider("player_hitbox", this.scale, this.position);
 	
 	this.health = 3;
-	this.defense = 0;
+	
+	this.defenseA = 0;
+	this.defenseH = 0;
+	this.defenseP = 0;
+	this.defenseS = 0;
+	
+	this.defense = 0; //this.defenseA + this.defenseH + this.defenseP + this.defenseS;
+	
 	this.exp = 0;
 	this.level = 1;
 	
