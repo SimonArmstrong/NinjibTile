@@ -10,6 +10,8 @@ var Slime4 = new Enemy("Slime", 2, "slime_right.png", Math.floor((Math.random() 
 //Hi Alex
 var enemies = [];
 
+var wave = 0;
+
 var left  = document.createElement("img");
 var right = document.createElement("img");
 var up    = document.createElement("img");
@@ -35,6 +37,34 @@ enemies.push(Slime4);
 
 var attackTime = 0;
 var doorOpen = true;
+
+function spawnEnemy()
+{
+	if(enemies.length === 0) 
+	{
+		enemy.level += 1;
+		
+		//var enemies = [];
+		
+		enemies.push(Rat);
+		enemies.push(Rat2);
+		enemies.push(Rat3);
+		enemies.push(Rat4);
+		enemies.push(Slime);
+		enemies.push(Slime2);
+		enemies.push(Slime3);
+		enemies.push(Slime4);
+		
+		for(var i = 0; i <= enemies.length - 1; i++)
+		{
+			if(enemies[i].health > 0)
+			{
+				enemies[i].draw();
+				enemies[i].healthMeter.draw();
+			}
+		}
+	}
+}
 
 function BuildEntities(deltaTime)
 {
