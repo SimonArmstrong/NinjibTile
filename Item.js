@@ -33,9 +33,9 @@ items.push(new Item("Chain Boots", 20, 0, 3, "Shoes", "placeHolderArmour.png"));
 items.push(new Item("Iron Boots", 35, 0, 4, "Shoes", "placeHolderArmour.png"));
 
 items.push(new Item("Wooden Sword", 0, 1, 0, "Weapon", "woodensword.png"));
-items.push(new Item ("Stone Sword", 16, 10, 0, "Weapon", "stonesword.png"));
-items.push(new Item("Bronze Sword", 35, 16, 0, "Weapon", "bronzesword.png"));
-items.push(new Item ("Steel Sword", 100, 25, 0, "Weapon", "placeHolderWeapon.png"));
+items.push(new Item ("Stone Sword", 16, 3, 0, "Weapon", "stonesword.png"));
+items.push(new Item("Bronze Sword", 35, 5, 0, "Weapon", "bronzesword.png"));
+items.push(new Item ("Steel Sword", 100, 8, 0, "Weapon", "placeHolderWeapon.png"));
 items.push(new Item("Developer Sword", 0, 2000, 0, "Weapon", "developersword.png"));
 
 items.push(new Item("buffer", 0, 0, 0, "Null", "nothing.png"));

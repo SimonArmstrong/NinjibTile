@@ -59,7 +59,7 @@ function BuildEntities(deltaTime)
 
 		if(player.direction == 2)
 		{
-			sword.position = new Vector2(player.position.x + 8, player.position.y + 20);
+			sword.position = new Vector2(player.position.x + 7, player.position.y + 25);
 			sword.image = ("sword3.png");
 			sword.scale = new Vector2(16,32);
 			if(sword.isAttacking == true && player.direction == 2)
