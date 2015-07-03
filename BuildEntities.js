@@ -332,7 +332,8 @@ function BuildEntities(deltaTime)
 				sword.draw();
 				if(sword.collider.isTouching(enemies[i].collider))
 				{
-					enemies[i].health -= sword.damage;
+					console.log(enemies[i].health);
+					enemies[i].health -= player.equippedItem * deltaTime * 8;
 					if(enemies[i].health <= 0)
 					{
 						enemies[i].isDead = true;
