@@ -86,7 +86,7 @@ function run()
 		
 		context.fillStyle = "#06f828";
 		context.font="18px Arial";
-		context.fillText("Press 'SPACE' to continue...", 200, 280);
+		context.fillText("Press '  F5  ' to continue...", 200, 280);
 	}		
 }
 

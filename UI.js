@@ -56,21 +56,26 @@ function LifeDisplay()
 	var heartImageA = document.createElement("img");
 	heartImageA.src = "notHeartArmour.png";
 	
-	if (player.health >= 4)
+	/*if (player.health >= 4)
 	{
 		var heartImage = heartImageA
 	}
 	else if (player.health <= 3 && player.health > 0)
 	{
 		var heartImage = heartImageN
-	}
+	}*/
 	
 	
 	//var heartImage.position = new Vector2 (16, 16);
 	
 	for(var i = 0; i < player.health; i++)
 	{
-		context.drawImage(heartImage, 125  + ((32 + 2) * i), -1);
+		context.drawImage(heartImageN, 125  + ((32 + 2) * i), -1);
+	}
+	
+	for(var i = 0; i < player.defense; i++)
+	{
+		context.drawImage(heartImageA, 261 + ((32 + 2) * i), -1);
 	}
 	
 
