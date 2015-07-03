@@ -102,6 +102,12 @@ function BuildShop()
 				context.fillStyle = "#D1D119";
 				context.font = "24px Lucida Sans Unicode";
 				context.fillText(buttons[i].item.name, (canvas.width/2 - 180), (canvas.height/2 + 100));
+				context.fillStyle = "#D1D119";
+				context.font = "12px Lucida Sans Unicode";
+				context.fillText("Attack: +" + buttons[i].item.damage, (canvas.width/2 - 180), (canvas.height/2 + 119));
+				context.fillStyle = "#D1D119";
+				context.font = "12px Lucida Sans Unicode";
+				context.fillText("Armour: +" + buttons[i].item.defense, (canvas.width/2 - 180), (canvas.height/2 + 138));
 			}
 			
 			if(i >= buttons.length)
