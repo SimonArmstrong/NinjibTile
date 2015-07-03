@@ -310,6 +310,7 @@ function BuildEntities(deltaTime)
 		if(enemies[i].health > 0)
 		{
 			enemies[i].draw();
+			enemies[i].healthMeter.draw();
 		}
 	
 	
